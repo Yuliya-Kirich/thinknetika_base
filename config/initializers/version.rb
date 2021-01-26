@@ -1,6 +1,8 @@
 class TestGuru
-  class << self
-    attr_reader :version
+
+  VERSION = '0.1.0'
+
+  def version
+    puts VERSION
   end
-  @version =  '0.1.0'
 end
