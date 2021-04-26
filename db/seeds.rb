@@ -24,4 +24,5 @@ user = User.create([{first_name: 'liya', last_name: 'Mirich'},
 Answer.create([{body: 'Test answer', question_id: question[0].id},
                {body: 'Test answer', question_id: question[1].id}])
 UsersSession.create([{user_id: user[0].id, test_id: test[0].id},
-                     {user_id: user[1].id, test_id: test[0].id}])
+                     {user_id: user[1].id, test_id: test[3].id},
+                     {user_id: user[0].id, test_id: test[3].id}])
