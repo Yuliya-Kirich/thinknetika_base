@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_214056) do
+ActiveRecord::Schema.define(version: 2021_06_24_213710) do
 
   create_table "answers", force: :cascade do |t|
     t.string "body", null: false
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 2021_02_22_214056) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "last_name"
+    t.integer "test_id", null: false
+    t.index ["test_id"], name: "index_authors_on_test_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -63,6 +71,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_214056) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "authors", "tests"
   add_foreign_key "questions", "tests"
   add_foreign_key "tests", "categories"
   add_foreign_key "users_sessions", "tests"

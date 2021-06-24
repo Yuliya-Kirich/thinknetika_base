@@ -26,3 +26,8 @@ Answer.create([{body: 'Test answer', question_id: question[0].id},
 UsersSession.create([{user_id: user[0].id, test_id: test[0].id},
                      {user_id: user[1].id, test_id: test[3].id},
                      {user_id: user[0].id, test_id: test[3].id}])
+
+Author.create( [{first_name: 'Илья', middle_name: 'Олегович', last_name: 'Горохов', test_id: test[0].id},
+               {first_name: 'Леонид', middle_name: 'Петрович', last_name: 'Куликов', test_id: test[1].id},
+                {first_name: 'Илья', middle_name: 'Олегович', last_name: 'Горохов', test_id: test[2].id},
+               {first_name: 'Илья', middle_name: 'Олегович', last_name: 'Горохов', test_id: test[3].id}])
