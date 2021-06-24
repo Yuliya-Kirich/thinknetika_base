@@ -1,6 +1,8 @@
 class Test < ApplicationRecord
-  has_and_belongs_to_many :user
-  has_many :question
+  has_many :users_sessions
+  has_many :users, :through => :users_sessions
+  has_many :questions
+  has_many :authors
   belongs_to :category
 
   def self.search_to_categories_title(type_of_category)
