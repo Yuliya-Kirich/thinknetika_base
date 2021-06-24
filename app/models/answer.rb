@@ -1,3 +1,3 @@
 class Answer < ApplicationRecord
-  belongs_to :question, foreign_key: true
+  belongs_to :question
 end

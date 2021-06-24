@@ -1,6 +1,7 @@
 class Test < ApplicationRecord
-  has_many :users_session, :question
-  belongs_to :category, foreign_key: true
+  has_and_belongs_to_many :user
+  has_many :question
+  belongs_to :category
 
   def self.search_to_categories_title(type_of_category)
     Test.joins('JOIN categories on tests.category_id=categories.id')
