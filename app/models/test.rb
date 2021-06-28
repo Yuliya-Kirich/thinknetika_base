@@ -2,7 +2,7 @@ class Test < ApplicationRecord
   has_many :users_sessions
   has_many :users, through: :users_sessions
   has_many :questions
-  belongs_to :author, class_name: 'User', foreign_key: "author"
+  belongs_to :author, foreign_key: :user_id, class_name: 'User'
   belongs_to :category
 
   def self.search_to_categories_title(type_of_category)
