@@ -5,31 +5,42 @@ class Test < ApplicationRecord
   belongs_to :author, foreign_key: :user_id, class_name: 'User'
   belongs_to :category
 
-  n = Float::INFINITY
 
-  validates :title, presence: true
+
+  validates :title, presence: true, uniqueness: true
 
   validates :level, numericality: { only_integer: true },
-                    presence: true
+                    presence: true, uniqueness: true
 
+  validates :level,  uniqueness: {scope: [:level, :title], message: "should have a unique level of title" }
    #Может существовать только один Тест с данным названием и уровнем
-  validate :validate_test_case_sensitive, on: :create
 
 
 
-  scope :easy, -> {where(level:0..1).order(created_at: :asc)}
-  scope :middle, -> {where(level:2..4).order(created_at: :asc)}
-  scope :difficult, -> {where(level:5..n).order(created_at: :asc)}
-  scope :selection_name_category, ->(type_of_category) {joins(:category)
-                                                          .where('type_of_category=?', type_of_category)
-                                                          .order('title DESC')
-                                                          .pluck(:title)}
-  scope :test_set, -> {Test.select(:title, :level)}
+  scope :easy, -> {where(level:0..1)}
+  scope :middle, -> {where(level:2..4)}
+  scope :difficult, -> {where(level:5..Float::INFINITY)}
+  scope :category_name, ->(type_of_category) {joins(:category)
+                                                          .where('type_of_category=?', type_of_category)}
+  scope :test_set, -> {select(:title, :level)}
 
 
   private
-  def validate_test_case_sensitive
-    errors.add(:title) if Test.where("level==? AND title==?", level, title) != []
+
+  def sort_easy
+    easy.order(created_at: :asc)
   end
 
+  def sort_middle
+    middle.order(created_at: :asc)
+  end
+
+  def sort_difficult
+    difficult.order(created_at: :asc)
+  end
+
+  def selection_name_category
+    category_name.order('title DESC')
+                 .pluck(:title)
+  end
 end
