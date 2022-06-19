@@ -7,10 +7,10 @@ class Test < ApplicationRecord
 
 
 
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
 
   validates :level, numericality: { only_integer: true },
-                    presence: true, uniqueness: true
+                    presence: true
 
   validates :level,  uniqueness: {scope: [:level, :title], message: "should have a unique level of title" }
    #Может существовать только один Тест с данным названием и уровнем
