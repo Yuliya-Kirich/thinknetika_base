@@ -9,8 +9,7 @@ class Answer < ApplicationRecord
   private
   #У одного Вопроса может быть от 1-го до 4-х ответов
   def validate_question_to_answer
-    question = Question.find_by(id: question_id)
-    errors.add(:question_id) if question.answers.ids.count>4
+    errors.add(:question_id, 'answers limit exceeded') if question.answers.count>4
   end
 
    def answer_sorting
