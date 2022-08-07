@@ -2,26 +2,17 @@ class QuestionsController < ApplicationController
 
   before_action :find_question, only: %i[show]
   before_action :find_test, only: %i[show]
-  #after_action :find_test
   after_action :send_log_message
   around_action :log_execute_time
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
-    # result = ["Class: #{params.class}",
-    #    "Parameters: #{params.inspect}"]
-    #  render plain: result.join("\n")
     @questions=Question.all
     # render json: {questions: Question.all}
   end
 
   def show
-    #@question=Question.find(params[:id])
-    #controller_name
-    # action_name
-    #render inline: "<%=@question.body%>"
-    #render inline: "<%=@test.title%>"
     if @test.blank?
       render plain: 'В данном тесте еще нет вопросов'
     end
@@ -31,15 +22,10 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    #result=["Class: #{params.class}",
-    #        "Parameters: #{params.inspect}"]
-    #   render plain: result.join("\n")
     question = Question.create(question_params)
     result=["#{question.inspect}, #{question.body}"]
     if question.persisted?
-      # redirect_to 'questions/'+"#{:id}"
       render plain: result.join("\n")
-      #render plain: question.inspect, json: question.body , status: :created
     else
       render json: question.errors, status: :unprocessable_entity
     end
@@ -68,8 +54,6 @@ class QuestionsController < ApplicationController
   end
 
   def find_test
-    #@question=Question.first
-
     @test=Test.where(id: @question.test_id).first
   end
 

@@ -9,10 +9,8 @@ Rails.application.routes.draw do
     resource :questions
   end
 
-  #get "tests/:category/:title", to: "tests#search"
-  # get "questions/:body", to: "questions#search"
   match "tests/:id", to: "tests#create", via: %i[post put]
   get  "tests/:id/start", to: "tests#start"
   get "tests/:id/questions" , to: "tests#search_all_questions"
 
-  end
+end
