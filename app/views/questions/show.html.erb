@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Вопрос</title>
+
+</head>
+<body>
+<style>
+
+
+    h1 {
+        font-size: 24px;
+        text-transform: uppercase;
+        font-style: italic;
+        font-family: 'William', serif;
+        margin-bottom: 0px;
+        margin-top: 0;
+        padding-top: 34px;
+        font-weight: normal;
+        color: white;
+
+    }
+
+    h2 {
+        margin-top: 0px;
+        font-size: 30px;
+        text-transform: uppercase;
+        font-family: 'Inter', sans-serif;
+        margin-bottom: 24px;
+        color: white;
+
+    }
+
+    h3 {
+        font-size: 15px;
+        text-transform: uppercase;
+        font-family: 'William', serif;
+        margin: 5px 5px 5px 10vh;
+        line-height: 18px;
+        font-weight: normal;
+        color: white;
+        text-align: left !important;
+    }
+
+    p {
+        font-family: 'Inter', sans-serif;
+        text-align: left;
+
+    }
+
+    .rails-default-about-page {
+        background-color: mediumaquamarine;
+        width: 50%;
+        height: auto;
+        text-align: center;
+        font-family: arial, sans-serif;
+        margin: auto;
+        overflow: auto
+    }
+
+    .field {
+        clear:both;
+        text-align:right;
+        line-height:25px;
+    }
+
+    .main {float:left}
+
+    label {
+        float:left;
+        padding-right:10px;
+        padding-left: 40px;
+    }
+
+
+    input {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        margin: 0;
+        font: inherit;
+        color: inherit;
+        padding-inline-end: 44px;
+        padding-inline-start: 52px;
+        text-align: center;
+    }
+
+    textarea {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        margin: 0;
+        font: inherit;
+        color: inherit;
+        padding-inline-end: 44px;
+        padding-inline-start: 52px;
+        text-align: center;
+    }
+
+    .box div {
+        margin: 10px 10px 10px 10px ;
+        width:90% ;
+        display:inline-block;
+        float:left;
+    }
+
+    stylesheet
+    input[type="text" i] {
+        padding: 1px 2px;
+
+    }
+    input[type="submit"] {
+        border-radius: 25px;
+        padding-inline-start: 52px;
+        line-height: inherit;
+    }
+
+    stylesheet
+
+</style>
+
+
+<div class="rails-default-about-page">
+  <br> <br> <br> <br>
+
+  <h1>Вопрос</h1>
+  <h3></h3>
+
+  <form action = "/questions/:id" method="get">
+    <input name="authenticity_token" value="<%=form_authenticity_token%>>" type="hidden"><br>
+    <div class="box">
+      <div class="field">
+
+        <p> <label for = "question-body" > Вопрос для теста: <%=@test.title%></label> </p><br>
+        <p style="margin: 5px 5px 5px 39px" type="text" name="question[body]" id="question-body" ><%=@question.body%></p><br>
+        <p> <label for = "question-updated" > Обновлен: </label> </p>
+        <p type="text" name="question[updated]" id="question-updated" ><%=@question.updated_at.strftime("%d-%m-%Y %H:%M:%S")%></p><br>
+
+
+
+      </div>
+    </div>
+    <input type="edit"  value="Редактировать" ><br>
+    <br><br><br>
+  </form>
+</div>
+</body>
+
+<p style=" text-align: center">Сделано по ТЗ от Thinknetica: <a href = " https://thinknetica.com" target="_blank">www.thinknetica.com</a></p>
+<p  style=" text-align: center"><a href = "about/author">Информация об авторе</a></p>
+
+</html>>
