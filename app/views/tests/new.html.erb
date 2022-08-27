@@ -3,133 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Создать новый тест</title>
-
 </head>
+
 <body>
-<style>
-
-
-    h1 {
-        font-size: 24px;
-        text-transform: uppercase;
-        font-style: italic;
-        font-family: 'William', serif;
-        margin-bottom: 0px;
-        margin-top: 0;
-        padding-top: 34px;
-        font-weight: normal;
-        color: white;
-
-    }
-
-    h2 {
-        margin-top: 0px;
-        font-size: 30px;
-        text-transform: uppercase;
-        font-family: 'Inter', sans-serif;
-        margin-bottom: 24px;
-        color: white;
-
-    }
-
-    h3 {
-        font-size: 15px;
-        text-transform: uppercase;
-        font-family: 'William', serif;
-        margin: 5px 5px 5px 10vh;
-        line-height: 18px;
-        font-weight: normal;
-        color: white;
-        text-align: left !important;
-    }
-
-    p {
-        font-family: 'Inter', sans-serif;
-        text-align: center;
-    }
-    .rails-default-about-page {
-        background-color: mediumaquamarine;
-        width: 50%;
-        height: auto;
-        text-align: center;
-        font-family: arial, sans-serif;
-        margin: auto;
-        overflow: auto
-    }
-
-    .field {
-        clear:both;
-        text-align:right;
-        line-height:25px;
-    }
-
-    .main {float:left}
-
-    label {
-        float:left;
-        padding-right:10px;
-        padding-left: 40px;}
-
-
-    input {
-        font-family: inherit;
-        font-size: inherit;
-        line-height: inherit;
-        margin: 0;
-        font: inherit;
-        color: inherit;
-        padding-inline-end: 44px;
-        padding-inline-start: 52px;
-        text-align: center;
-    }
-
-    textarea {
-        font-family: inherit;
-        font-size: inherit;
-        line-height: inherit;
-        margin: 0;
-        font: inherit;
-        color: inherit;
-        padding-inline-end: 44px;
-        padding-inline-start: 52px;
-        text-align: center;
-    }
-
-    stylesheet
-    input[type="text" i] {
-        padding: 1px 2px;
-    }
-    input[type="submit"] {
-        border-radius: 25px;
-        padding-inline-start: 52px;
-        line-height: inherit;
-    }
-    .btn {
-        display: inline-block; /* Строчно-блочный элемент */
-        background: #8C959D; /* Серый цвет фона */
-        color: #fff; /* Белый цвет текста */
-        padding: 1rem 1.5rem; /* Поля вокруг текста */
-        text-decoration: none; /* Убираем подчёркивание */
-        border-radius: 3px; /* Скругляем уголки */
-    }
-
-    stylesheet
-
-</style>
-
-
 <div class="rails-default-about-page">
   <br> <br> <br> <br>
-
   <h1>Создать тест</h1>
   <h3></h3>
 
   <form action = "/tests" method="post">
-    <input name="authenticity_token" value="<%=form_authenticity_token%>>" type="hidden">
+    <input name="authenticity_token" value="<%=form_authenticity_token%>>" type="hidden" >
     <br>
     <div class="main">
       <div class="field">
-
         <p> <label for = "test-title" > Название:</label>
           <textarea rows="15%" cols="45%" name="test[title]" id="test-title" placeholder="Введите название теста" maxlength="250"></textarea>
         </p><br>
@@ -144,18 +30,14 @@
     <p>
       <input type="submit"  value="Создать">
     </p><br>
-
 </form>
 
 </div>
 </body>
-</html>
 
-</body>
 
 <p>Сделано по ТЗ от Thinknetica: <a href = " https://thinknetica.com" target="_blank">www.thinknetica.com</a>
 </p>
 <p><a href = "about/author">Информация об авторе</a></p>
 
 </html>
->

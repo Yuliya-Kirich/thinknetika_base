@@ -1,25 +1,30 @@
 class TestsController < ApplicationController
 
-  before_action :find_test, only: %i[show]
+  before_action :find_test, only: %i[index, show, search_all_questions]
   after_action :send_log_message
   around_action :log_execute_time
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
+  skip_before_action :verify_authenticity_token
 
   def index
     @tests=Test.all
     end
 
   def new
+    @test
+    # redirect_to "/questions/"+"#{question.id}", question: @question
   end
 
   def create
     @test = Test.new(user_id: 1, category_id: 5)
     @test.update(test_params)
-    redirect_to "/tests/"+"#{@test.id}"
+    redirect_to "/tests/"+"#{@test.id}", test_id: @test.id
   end
 
   def show
+
+    @test=Test.find(params[:id])
   end
 
   def destroy
@@ -42,6 +47,7 @@ class TestsController < ApplicationController
 
   def  test_params
     params.require(:test).permit(:title, :level)
+    #params.permit(:title, :level)
   end
 
   def search

@@ -1,34 +1,44 @@
 class QuestionsController < ApplicationController
 
-  before_action :find_question, only: %i[show]
-  before_action :find_test, only: %i[show]
+  #before_action :find_question, only: %i[show]
+  before_action :find_test, only: %i[index, new, create]
   after_action :send_log_message
   around_action :log_execute_time
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
-    @questions=Question.all
+    @test=Test.find(params[:test_id])
+    @question = @test.questions
     # render json: {questions: Question.all}
   end
 
   def show
-    if @test.blank?
-      render plain: 'В данном тесте еще нет вопросов'
-    end
+    @test = Test.find(params[:test_id])
+    @question = @test.questions.find(params[:id])
   end
 
   def new
+    # @test=Test.find(params[:id])
+    #render 'tests/questions/new', test: @test
+   # redirect_to "/questions/"+"#{question.id}", question: @question
+    # @test=Test.find(params id: @tests.id)
+    @test=Test.find(params[:test_id])
+
   end
 
   def create
-    question = Question.create(question_params)
-    result=["#{question.inspect}, #{question.body}"]
-    if question.persisted?
-      render plain: result.join("\n")
-    else
-      render json: question.errors, status: :unprocessable_entity
-    end
+    @question=@test.questions.create(question_params)
+    redirect_to "/tests/"+"#{@test.id}"+"/questions/"+"#{@question.id}", id: params[:test_id]
+    #@question=@test.questions.create(question_param)
+    #question = Question.create(question_params)
+    #result=["#{@question.inspect}, #{@question.body}"]
+    #if @question.persisted?
+    #   render plain: result.join("\n")
+    #else
+    #   render json: @question.errors, status: :unprocessable_entity
+    #end
+
   end
 
   def search
@@ -49,12 +59,13 @@ class QuestionsController < ApplicationController
 
   private
   def find_question
-    @question=Question.find(params[:id])
+    @question=@test.questions
+    #@question=Question.find(params[:id])
 
   end
 
   def find_test
-    @test=Test.where(id: @question.test_id).first
+    @test=Test.find(params[:test_id])
   end
 
   def log_execute_time
@@ -73,7 +84,8 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:body, :test_id)
+    params.require(:question).permit(:body)
+    #permit(:body)
   end
 
 end
