@@ -1,10 +1,6 @@
 class Question < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  belongs_to :test
 
+  belongs_to :test
   has_many :answers
 
   validates :body, presence: true

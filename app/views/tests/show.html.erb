@@ -21,7 +21,7 @@
         <p  style ="text-align: left" type="text" name="test[title]" id="test-title" ><%=@test.title%></p><br>
         <p> <label for = "test-level" > Уровень: </label></p>
         <p style ="text-align: left" type="text" name="test[level]" id="test-level" ><%=@test.level%></p><br>
-        <p><button class="button" onClick="window.open('<%=@test.id%>/questions/new')">Создать вопрос для теста</button></p>
+        <p><button class="button" onClick="window.open('/tests/<%=@test.id%>/questions/new')">Создать вопрос для теста</button></p>
       </div>
 </div>
     <input type="edit"  value="Редактировать" ><br>

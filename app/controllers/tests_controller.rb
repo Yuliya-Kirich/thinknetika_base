@@ -12,8 +12,6 @@ class TestsController < ApplicationController
     end
 
   def new
-    @test
-    # redirect_to "/questions/"+"#{question.id}", question: @question
   end
 
   def create
@@ -23,7 +21,6 @@ class TestsController < ApplicationController
   end
 
   def show
-
     @test=Test.find(params[:id])
   end
 
@@ -47,7 +44,6 @@ class TestsController < ApplicationController
 
   def  test_params
     params.require(:test).permit(:title, :level)
-    #params.permit(:title, :level)
   end
 
   def search
