@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 
-  before_action :find_test
+  before_action :find_test, only: %i[create, show]
   before_action :find_question, only: %i[destroy]
   after_action :send_log_message
   around_action :log_execute_time
@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
+    find_test
     @questions = @test.questions
   end
 
@@ -16,11 +17,13 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    find_test
   end
 
   def create
+    find_test
     @question=@test.questions.create(question_params)
-    redirect_to "/tests/"+"#{@test.id}"+"/questions/"+"#{@question.id}", id: params[:test_id]
+    render 'questions/show'
   end
 
   def search
@@ -32,11 +35,11 @@ class QuestionsController < ApplicationController
 
   def destroy
     question=@question.destroy
-    if question.destroyed?
-      redirect_to "/tests/#{@test.id}/questions"
-      else
+     if question.destroyed?
+      redirect_to action: :index
+     else
       render json: question.errors, status: :unprocessable_entity
-    end
+     end
   end
 
   private
