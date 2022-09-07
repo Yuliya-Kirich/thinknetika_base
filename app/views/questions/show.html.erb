@@ -13,11 +13,11 @@
   <h1>Вопрос</h1>
   <h3></h3>
 
-  <form action = "/tests/<%=@test.id%>/questions/<%=@question.id%>}" method="get">
+  <form action = "/questions/<%=@question.id%>" method="get">
     <input name="authenticity_token" value="<%=form_authenticity_token%>>" type="hidden"><br>
     <div class="box">
       <div class="field">
-        <p> <label for = "question-body" > Вопрос для теста: <%=@test.title%></label> </p><br>
+        <p> <label for = "question-body" > Вопрос для теста: <%=@question.test.title%></label> </p><br>
         <p style = "text-align:left; margin: 5px 5px 5px 55px" type="text" name="question[body]" id="question-body" ><%=@question.body%></p><br>
         <p > <label for = "question-updated" > Обновлен: </label> </p>
         <p style = "text-align:left; margin: 5px 5px 5px 55px" type="text" name="question[updated]" id="question-updated" ><%=@question.updated_at.strftime("%d-%m-%Y %H:%M:%S")%></p><br>

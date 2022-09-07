@@ -20,7 +20,7 @@
     </tr>
     </thead>
     <tbody>
-    <%@tests.each do |test| %>
+    <%@test.each do |test| %>
     <tr>
       <td><%=test.id%></td>
       <td><%=link_to test.title, test_path(test), id: test.id %></td>
