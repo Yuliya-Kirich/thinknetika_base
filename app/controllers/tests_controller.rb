@@ -1,12 +1,13 @@
 class TestsController < ApplicationController
 
-  before_action :find_test, only: %i[index show destroy]
+  before_action :find_test, only: %i[show destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
   skip_before_action :verify_authenticity_token
 
   def index
+    @test=Test.all
   end
 
   def new
@@ -40,11 +41,7 @@ class TestsController < ApplicationController
   end
 
   def find_test
-    if params[:id].nil?
-      @test=Test.all
-    else
       @test=Test.find(params[:id])
-    end
   end
 
    def rescue_with_test_not_found
