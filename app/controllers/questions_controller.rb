@@ -16,8 +16,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question=@test.questions.create(question_params)
-    render action: :show
+    @question=@test.questions.new(question_params)
+    if @question.save
+      render action: :show
+    else
+      render plain:"Что-то пошло не так!"
+    end
   end
 
   def destroy
