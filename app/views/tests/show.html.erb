@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Тест</title>
+
+</head>
+<body>
+
+<div class="rails-default-about-page">
+  <br> <br> <br> <br>
+
+  <h1>Тест №<%=@test.id%></h1>
+  <h3></h3>
+
+  <form action = "/tests/<%@test.id%>"  method="get">
+    <input name="authenticity_token" value="<%=form_authenticity_token%>>" type="hidden"><br>
+<div class="box">
+      <div class="field">
+        <p> <label for = "test-title" > Название: </label> </p>
+        <p  style ="text-align: left" type="text" name="test[title]" id="test-title" ><%=@test.title%></p><br>
+        <p> <label for = "test-level" > Уровень: </label></p>
+        <p style ="text-align: left" type="text" name="test[level]" id="test-level" ><%=@test.level%></p><br>
+        <p><button class="button" onClick="window.open('/tests/<%=@test.id%>/questions/new')">Создать вопрос для теста</button></p>
+      </div>
+</div>
+    <input type="edit"  value="Редактировать" ><br>
+    <br><br><br>
+  </form>
+</div>
+</body>
+
+<p style=" text-align: center">Сделано по ТЗ от Thinknetica: <a href = " https://thinknetica.com" target="_blank">www.thinknetica.com</a></p>
+<p  style=" text-align: center"><a href = "about/author">Информация об авторе</a></p>
+
+</html>>
