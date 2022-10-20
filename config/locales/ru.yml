@@ -1,4 +1,5 @@
 ru:
+  questions_new: "Создать новый"
   clients:
     index:
       title: Список клиентов

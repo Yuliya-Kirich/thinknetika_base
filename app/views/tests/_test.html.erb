@@ -1,0 +1,13 @@
+<tr>
+<td><%=test.id%></td>
+<td><%=link_to test.title, test_path(test), id: test.id %></td>
+<td><%=test.updated_at.strftime("%d-%m-%Y %H:%M:%S") %></td>
+<td><%=test_level(test)%></td>
+<td><%=test.questions.count%></td>
+<td>
+  <ul><%=button_to "Удалить", test_path(test), method: :delete, data: {confirm: "Подтверждаете удаление?"}, class:"button_to2"%></ul>
+  <ul><%=button_to "Изменить", edit_test_path(test), method: :get, class:"button_to2" %></ul>
+  <ul><%=button_to "Просмотреть", test_path(test),  method: :get, class:"button_to2" %></ul>
+</td>
+</tr>
+
