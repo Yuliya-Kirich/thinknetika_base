@@ -1,1 +1,31 @@
-<%=render 'form' %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Создать новый вопрос</title>
+</head>
+<body>
+<div class="rails-default-about-page">
+  <br> <br> <br> <br>
+  <h1>Создать новый вопрос</h1>
+  <h3></h3>
+  <form action = "/tests/<%=@test.id%>/questions" method="post" >
+    <input name="authenticity_token" value="<%=form_authenticity_token%>>" type="hidden">
+    <br>
+    <div class="main">
+        <p> <label for = "question-body" > Текст вопроса:</label>
+        <textarea rows="15%" cols="45%" name="question[body]" id="question-body" placeholder="Введите вопрос" maxlength="5000"></textarea>
+        </p><br>
+      </div>
+    <p>
+      <input type="submit"  value="Создать">
+    </p><br>
+
+ </form>
+
+</div>
+<p>Сделано по ТЗ от Thinknetica: <a href = " https://thinknetica.com" target="_blank">www.thinknetica.com</a></p>
+<p><a href = "about/author">Информация об авторе</a></p>
+</body>
+</html>
+>

@@ -1,69 +1,43 @@
 class TestsController < ApplicationController
 
-
-  before_action :find_test, only: %i[show destroy edit update]
+  before_action :find_test, only: %i[show destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
   skip_before_action :verify_authenticity_token
 
   def index
-    @test=Test.order(params[:sort])
+    @test=Test.all
   end
 
   def new
-    @test = Test.new(:user_id=>1)
-    @categories = Category.group(:number)
   end
 
   def create
-
-    # @test = Test.new(user_id: 1)
-    @categories = Category.group(:number)
-    @test= Test.new(test_params)
-    @test.user_id=1
-    if @test.save
-      redirect_to @test
-    else
-      render :new
-    end
-    #render action: :show, id: @test.id
+    @test = Test.new(user_id: 1, category_id: 5)
+    @test.update(test_params)
+    redirect_to action: :show, id: @test.id
   end
 
   def show
-    @questions=@test.questions
   end
 
   def destroy
-    @test.questions.clear
-    @test.users.clear
     @test=@test.destroy
    if @test.destroyed?
-     flash.notice = "Тест '#{@test.title}' удален!"
      redirect_to action: :index
    else
      render json: tests.errors
    end
   end
 
-  def edit
-    @categories = Category.group(:number)
-  end
-
-  def update
-    @categories = Category.group(:number)
-    if @test.update(test_params)
-      redirect_to @test
-    else
-      render action: 'edit'
-    end
-  end
-
   private
 
   def test_params
+    params.require(:test).permit(:title, :level)
+  end
 
-    params.require(:test).permit(:title, :level, :category_id)
+  def search
   end
 
   def find_test
