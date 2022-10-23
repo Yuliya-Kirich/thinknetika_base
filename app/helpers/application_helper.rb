@@ -3,6 +3,6 @@ module ApplicationHelper
     content_tag(:p,  "2021 - #{Time.now.strftime('%Y')}")
   end
   def github_url(author, repo)
-    "<p style='text-align: center'><a href='#{author}'>Информация об авторе: Кириченко Юлия. </a><a href='#{repo}'>проект Тест Гуру</a></p>".html_safe
+    content_tag(:p,  (link_to 'Информация об авторе: Кириченко Юлия. ', author , :target => "_blank") + (link_to 'Проект Тест Гуру. ', repo , :target => "_blank"), :style=>'text-align: center')
   end
 end

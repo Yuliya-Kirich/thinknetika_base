@@ -15,10 +15,6 @@
     <%= yield %>
   </body>
 
-<footer>
-  <p style=" text-align: center">Учебный проект в онлайн-школе Thinknetica <a href = " https://thinknetica.com" target="_blank">www.thinknetica.com</a></p>
-  <%=github_url('/about/author', '/about')%>
-  <p><%=footer_year%></p>
-</footer>
+  <%= render 'shared/footer' %>
 
 </html>

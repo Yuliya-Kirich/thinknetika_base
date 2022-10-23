@@ -8,7 +8,7 @@ class TestsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @test=Test.order(params[:sort])
+    @test = Test.order(params[:sort])
   end
 
   def new
@@ -17,27 +17,24 @@ class TestsController < ApplicationController
   end
 
   def create
-
-    # @test = Test.new(user_id: 1)
     @categories = Category.group(:number)
-    @test= Test.new(test_params)
-    @test.user_id=1
+    author = User.first
+    @test = author.authored_tests.build(test_params)
     if @test.save
       redirect_to @test
     else
       render :new
     end
-    #render action: :show, id: @test.id
   end
 
   def show
-    @questions=@test.questions
+    @questions = @test.questions
   end
 
   def destroy
     @test.questions.clear
     @test.users.clear
-    @test=@test.destroy
+    @test = @test.destroy
    if @test.destroyed?
      flash.notice = "Тест '#{@test.title}' удален!"
      redirect_to action: :index
@@ -67,7 +64,7 @@ class TestsController < ApplicationController
   end
 
   def find_test
-      @test=Test.find(params[:id])
+      @test = Test.find(params[:id])
   end
 
    def rescue_with_test_not_found

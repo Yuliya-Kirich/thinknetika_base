@@ -1,7 +1,8 @@
 module TestsHelper
-  TEST_LEVELS={0=>"Легкий", 1=>"Средне-легкий", 3=>"Средний", 4=>"Средне-сложный", 5=>"Сложный", 6=>"Очень сложный"}.freeze
+  TEST_LEVELS = %w@Легкий Средне-легкий Средний Средне-сложный Сложный Очень\ сложный@.freeze
+
   def test_level(test)
-    TEST_LEVELS[test.level] || "В процессе создания"
+    TEST_LEVELS.fetch(test.level, "В процессе создания")
   end
 end
 
