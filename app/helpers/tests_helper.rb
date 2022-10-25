@@ -5,4 +5,3 @@ module TestsHelper
     TEST_LEVELS.fetch(test.level, "В процессе создания")
   end
 end
-

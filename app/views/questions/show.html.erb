@@ -1,6 +1,5 @@
 <div class="rails-default-about-page">
   <h1>Вопрос для теста "<%=@question.test.title%>"</h1>
-  <form action = "/questions/<%=@question.id%>" method="get">
     <input name="authenticity_token" value="<%=form_authenticity_token%>>" type="hidden"><br>
     <div class="box">
       <div class="field">
@@ -15,5 +14,4 @@
       <%=button_to "Назад", test_url(@question.test), method: :get, :class=>"button_to2"%> <br>
       <%=button_to "Редактировать", edit_question_path(@question.id), method: :get, :class=>"button_to2" %> <br>
     </ul>
-  </form>
 </div>
