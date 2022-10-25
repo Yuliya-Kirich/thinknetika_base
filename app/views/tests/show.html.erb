@@ -12,7 +12,14 @@
 <div>
   <%if @test.questions.present?%>
   <table  class="table">
-    <%= render 'shared/question', resource:[@test, @question] %>
+    <tr>
+      <th>Номер вопроса</th>
+      <th class="collection_select">Вопрос</th>
+      <th>Код вопроса</th>
+      <th>Дата обновления</th>
+      <th> </th>
+    </tr>
+    <%= render @test.questions.first %>
   </table>
     <% else %>
   <p> Для данного теста вопросов не создано </p>
