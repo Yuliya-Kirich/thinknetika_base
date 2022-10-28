@@ -32,8 +32,6 @@ class TestsController < ApplicationController
   end
 
   def destroy
-    @test.questions.clear
-    @test.users.clear
     @test = @test.destroy
    if @test.destroyed?
      flash.notice = "Тест '#{@test.title}' удален!"

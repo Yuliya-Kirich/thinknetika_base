@@ -1,6 +1,5 @@
-<% @questions.each_with_index do |question, index| %>
 <tr>
-  <td><%= index+1 %></td>
+  <td><%= question_counter + 1 %></td>
   <td class="collection_select"><%= link_to question.body, question_path(question) %></td>
   <td><%= 'Que-'+question.id.to_s %></td>
   <td><%= question.updated_at.strftime("%d-%m-%Y %H:%M:%S") %></td>
@@ -10,4 +9,4 @@
     <ul><%= button_to "Просмотреть",question_path(question),  method: :get, class:"button_to2" %></ul>
   </td>
 </tr>
-<%end%>
+
