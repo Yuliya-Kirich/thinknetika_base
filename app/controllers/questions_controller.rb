@@ -36,11 +36,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question = @question.destroy
-     if @question.destroyed?
-       redirect_to @question.test
-     else
-       render plain: 'Что то пошло не так'
-     end
+    redirect_to @question.test
   end
 
   private

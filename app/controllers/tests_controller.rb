@@ -33,12 +33,7 @@ class TestsController < ApplicationController
 
   def destroy
     @test = @test.destroy
-   if @test.destroyed?
-     flash.notice = "Тест '#{@test.title}' удален!"
-     redirect_to action: :index
-   else
-     render json: tests.errors
-   end
+    redirect_to tests_path
   end
 
   def edit
@@ -57,7 +52,6 @@ class TestsController < ApplicationController
   private
 
   def test_params
-
     params.require(:test).permit(:title, :level, :category_id)
   end
 
@@ -70,3 +64,4 @@ class TestsController < ApplicationController
    end
 
 end
+
