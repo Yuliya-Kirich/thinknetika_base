@@ -1,0 +1,26 @@
+<%= form_with model: @test, local: true do |form| %>
+  <%=render 'shared/errors', resource: @test%>
+  <br>
+  <div class="main">
+    <div class="field">
+     <%= form.label "Название"%>
+        <%=form.text_area :title, id: :test_title, placeholder:"Введите название теста", cols:85, rows:15, maxlength: 250 %>
+      <br>
+      <div>
+        <div>
+          <br>
+          <%= form.label "Уровень"%>
+          <%=form.number_field :level, id: :test_level, style:"width: 67%"%>
+          <br><br>
+        </div>
+        <div>
+          <%= form.label :category_id%>
+          <%=form.collection_select :category_id, @categories, :number, :type_of_category, {selected:  @test.category_id || Category.all.map(& :id), include_hidden: false}, prompt: true, uniq:true, class:"collection_select"%>
+        </div>
+      </div>
+  <br><br><br>
+  <p style="margin: 0 0 5% 10%;"><%=form.submit "Сохранить" %></p>
+  <br>
+      </div>
+  </div>
+<% end %>

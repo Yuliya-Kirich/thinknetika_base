@@ -1,36 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Тест</title>
-
-</head>
-<body>
-
 <div class="rails-default-about-page">
-  <br> <br> <br> <br>
-
-  <h1>Тест №<%=@test.id%></h1>
-  <h3></h3>
-
-  <form action = "/tests/<%@test.id%>"  method="get">
-    <input name="authenticity_token" value="<%=form_authenticity_token%>>" type="hidden"><br>
-<div class="box">
-      <div class="field">
-        <p> <label for = "test-title" > Название: </label> </p>
-        <p  style ="text-align: left" type="text" name="test[title]" id="test-title" ><%=@test.title%></p><br>
-        <p> <label for = "test-level" > Уровень: </label></p>
-        <p style ="text-align: left" type="text" name="test[level]" id="test-level" ><%=@test.level%></p><br>
-        <p><button class="button" onClick="window.open('/tests/<%=@test.id%>/questions/new')">Создать вопрос для теста</button></p>
-      </div>
+  <h1>Тест №<%= @test.id %></h1>
+  <%= form_with model: @test, local: true do |form| %>
+    <div>
+    <%= form.label "Название: " %> <br>
+    <%= form.label @test.title %> <br><br><br>
+    <%= form.label "Уровень: " %> <br>
+    <%= form.label @test.level %> <br><br><br>
+    <%= form.label "Категория: " %> <br>
+    <%= form.label @test.category.type_of_category %> <br><br><br>
+  <%end %>
+<div>
+  <%if @test.questions.present?%>
+  <table  class="table">
+    <tr>
+      <th>Номер вопроса</th>
+      <th class="collection_select">Вопрос</th>
+      <th>Код вопроса</th>
+      <th>Дата обновления</th>
+      <th> </th>
+    </tr>
+    <%= render @test.questions %>
+  </table>
+    <% else %>
+  <p> Для данного теста вопросов не создано </p>
+    <% end %>
 </div>
-    <input type="edit"  value="Редактировать" ><br>
+<ul class="head_button2">
+  <%= button_to "Назад", tests_path(@test), method: :get, :class=> "button_to2" %>
+  <%= button_to "Редактировать", edit_test_path(@test), method: :get, :class=> "button_to2" %>
+  <%= button_to "Создать вопрос к тесту", new_test_question_path(@test.id), method: :get, :class=> "button_to2" %>
+  <br>
+</ul>
+</div>
     <br><br><br>
-  </form>
 </div>
-</body>
-
-<p style=" text-align: center">Сделано по ТЗ от Thinknetica: <a href = " https://thinknetica.com" target="_blank">www.thinknetica.com</a></p>
-<p  style=" text-align: center"><a href = "about/author">Информация об авторе</a></p>
-
-</html>>
