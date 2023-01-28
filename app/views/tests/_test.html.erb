@@ -8,5 +8,7 @@
   <ul><%= button_to "Удалить", test_path(test), method: :delete, data: {confirm: "Подтверждаете удаление?"}, class:"button_to2" %></ul>
   <ul><%= button_to "Изменить", edit_test_path(test), method: :get, class:"button_to2" %></ul>
   <ul><%= button_to "Просмотреть", test_path(test),  method: :get, class:"button_to2" %></ul>
+  <ul><%= button_to "Пройти тест", start_test_path(test),  class:"button_to2" %></ul>
 </td>
+
 </tr>
