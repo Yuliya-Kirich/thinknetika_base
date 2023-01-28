@@ -1,0 +1,16 @@
+<div class="rails-default-about-page">
+  <h1><%= question_header(@test, @question) %></h1>
+    <%= form_with model: [@test, @question], local:true do |form| %>
+      <%= render 'shared/errors', resource: @question %>
+      <div class="main">
+        <div class="field">
+          <%= form.label "Текст вопроса" %>
+          <%= form.text_area :body, id: :question_body, placeholder:"Введите вопрос", cols:55, rows:15, maxlength: 2500 %>
+        </div>
+          <div class="head_button", style="margin-left: 18%; margin-bottom: 15%">
+          <%=link_to 'Назад', :back%>
+          <p><%= form.submit "Сохранить", class:"button_to2" %></p>
+        </div>
+      </div>
+    <% end %>
+</div>

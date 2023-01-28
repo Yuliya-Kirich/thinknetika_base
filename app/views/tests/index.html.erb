@@ -1,0 +1,17 @@
+<div class="rails-default-about-page">
+  <h1>Полный список тестов</h1>
+  <table class="table">
+    <tr>
+      <th><%= link_to "Идентификатор теста", :sort => "id"%></th>
+      <th><%= link_to "Тест", :sort => "title" %></th>
+      <th><%= link_to "Дата обновления", :sort => "updated_at" %></th>
+      <th><%= link_to "Уровень", :sort => "level" %></th>
+      <th>Количество вопросов</th>
+      <th colspan="6"> Действия </th>
+    </tr>
+  <%= render @test %>
+    </table>
+  <br><br>
+  <%= button_to"Новый тест", new_test_path, method: :get, :class=> "button_to2" %>
+<br><br><br>
+</div>
