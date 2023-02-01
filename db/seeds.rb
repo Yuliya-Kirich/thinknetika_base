@@ -27,9 +27,8 @@ question = Question.create([{body: 'Question Test 1', test_id: test[0].id},
                             {body: 'Question Test 2', test_id: test[2].id}])
 
 Answer.create([{body: 'Test answer', question_id: question[0].id},
-      {body: 'Test answer', question_id: question[1].id}])
-
-#TestPassage.create([{user_id: user[0].id, test_id: test[0].id, current_question_id: current_question[0].id},
-#                     {user_id: user[1].id, test_id: test[3].id, current_question_id: current_question[0].id},
-#                  {user_id: user[0].id, test_id: test[3].id, current_question_id: current_question[0].id}])
+               {body: 'Test answer', question_id: question[1].id}])
+UsersSession.create([{user_id: user[0].id, test_id: test[0].id},
+                     {user_id: user[1].id, test_id: test[3].id},
+                     {user_id: user[0].id, test_id: test[3].id}])
 
