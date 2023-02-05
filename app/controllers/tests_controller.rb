@@ -1,5 +1,4 @@
 class TestsController < ApplicationController
-
   before_action :find_test, only: %i[show destroy edit update start]
   before_action :set_user, only: %i[create start update show new]
 
@@ -63,13 +62,11 @@ class TestsController < ApplicationController
     @test = Test.find(params[:id])
   end
 
-   def rescue_with_test_not_found
-     render plain: 'Такого теста нет'
-   end
+  def rescue_with_test_not_found
+    render plain: 'Такого теста нет'
+  end
 
   def set_user
     @user = User.first
   end
-
 end
-

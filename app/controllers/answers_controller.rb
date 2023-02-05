@@ -1,7 +1,6 @@
 class AnswersController < ApplicationController
-
-  before_action :find_question, only: %i[ new create ]
-  before_action :set_answer, only: %i[ show edit update destroy ]
+  before_action :find_question, only: %i[new create]
+  before_action :set_answer, only: %i[show edit update destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_answer_not_found
 
@@ -15,27 +14,25 @@ class AnswersController < ApplicationController
 
   def create
     @answer = @question.answers.new(answer_params)
-
     if @answer.save
-     redirect_to @answer, notice: 'Ответ на вопрос удачно создан'
-      else
-        render :new
-      end
+      redirect_to @answer, notice: 'Ответ на вопрос удачно создан'
+    else
+      render :new
+    end
   end
 
   def update
-      if @answer.update(answer_params)
-       redirect_to @answer
-      else
-        render :edit
-      end
+    if @answer.update(answer_params)
+      redirect_to @answer
+    else
+      render :edit
+    end
   end
 
   def destroy
     @answer.destroy
-     redirect_to @answer.question
+    redirect_to @answer.question
   end
-
 
   private
 
@@ -54,5 +51,4 @@ class AnswersController < ApplicationController
   def rescue_with_answer_not_found
     render plain: 'Такого ответа на вопрос не занесли в списки'
   end
-
 end

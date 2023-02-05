@@ -5,7 +5,6 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_first_question, on: :create
 
-
   def completed?
     current_question.nil?
   end
@@ -23,8 +22,8 @@ class TestPassage < ApplicationRecord
   end
 
   def correct_answer?(answer_ids)
-     (correct_answers.count == correct_answers.where(id: answer_ids).count) &&
-     correct_answers.count == answer_ids.count
+    (correct_answers.count == correct_answers.where(id: answer_ids).count) &&
+      correct_answers.count == answer_ids.count
   end
 
   def correct_answers
@@ -32,7 +31,6 @@ class TestPassage < ApplicationRecord
   end
 
   def next_question
-   test.questions.order(:id).where('id > ?', current_question.id).first
+    test.questions.order(:id).where('id > ?', current_question.id).first
   end
-
 end

@@ -6,7 +6,6 @@ class CreateAnswers < ActiveRecord::Migration[6.0]
       t.references :question, index: true, foreign_key: true
 
       t.timestamps null: false
-
     end
   end
 end

@@ -1,5 +1,4 @@
 class Test < ApplicationRecord
-
   has_many :test_passages
   has_many :users, through: :test_passages
   has_many :questions
@@ -10,16 +9,15 @@ class Test < ApplicationRecord
   validates :title, presence: true
   validates :level, numericality: { only_integer: true },
                     presence: true
-  validates :level,  uniqueness: {scope: [:level, :title], message: "should have a unique level of title" }
-   #Может существовать только один Тест с данным названием и уровнем
+  validates :level,  uniqueness: { scope: [:level, :title], message: 'should have a unique level of title' }
+  # Может существовать только один Тест с данным названием и уровнем
 
-  scope :easy, -> {where(level:0..1)}
-  scope :middle, -> {where(level:2..4)}
-  scope :difficult, -> {where(level:5..Float::INFINITY)}
-  scope :category_name, ->(type_of_category) {joins(:category)
-                                                          .where('type_of_category=?', type_of_category)}
-  scope :test_set, -> {select(:title, :level)}
-
+  scope :easy, -> { where(level: 0..1) }
+  scope :middle, -> { where(level: 2..4) }
+  scope :difficult, -> { where(level: 5..Float::INFINITY) }
+  scope :category_name, ->(type_of_category) { joins(:category)
+                                                 .where('type_of_category=?', type_of_category) }
+  scope :test_set, -> { select(:title, :level) }
 
   private
 
@@ -39,5 +37,4 @@ class Test < ApplicationRecord
     category_name.order('title DESC')
                  .pluck(:title)
   end
-
 end

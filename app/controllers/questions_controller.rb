@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-
   before_action :find_test, only: %i[create new]
   before_action :find_question, only: %i[show destroy edit update]
 
@@ -36,6 +35,7 @@ class QuestionsController < ApplicationController
   end
 
   private
+
   def find_question
     @question = Question.find(params[:id])
   end
@@ -51,5 +51,4 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:body)
   end
-
 end

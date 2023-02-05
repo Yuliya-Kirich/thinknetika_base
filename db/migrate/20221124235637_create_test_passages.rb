@@ -10,6 +10,5 @@ class CreateTestPassages < ActiveRecord::Migration[6.0]
     end
 
     add_foreign_key(:test_passages, :questions, column: :current_question_id)
-
   end
 end
