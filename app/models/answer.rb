@@ -14,5 +14,5 @@ class Answer < ApplicationRecord
 
   def answer_sorting
     correct.order(created_at: :asc)
-   end
+  end
 end

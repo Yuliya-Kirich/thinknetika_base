@@ -4,6 +4,11 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true, foreign_key: :current_question_id
 
   before_validation :before_validation_set_first_question, on: :create
+  after_validation :set_next_question, on: :update
+
+  validates :current_question, presence: true
+
+  EXPECTED_RATE = 85
 
   def completed?
     current_question.nil?
@@ -11,8 +16,20 @@ class TestPassage < ApplicationRecord
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
-    self.current_question = next_question
     save!
+  end
+
+  def question_number
+    number_for_question = test.questions
+    number_for_question.index(number_for_question.find { |l| l == current_question }) + 1
+  end
+
+  def correct_questions_rate
+    self.correct_questions * 100 / self.test.questions.count
+  end
+
+  def success?
+    correct_questions_rate >= EXPECTED_RATE
   end
 
   private
@@ -32,5 +49,9 @@ class TestPassage < ApplicationRecord
 
   def next_question
     test.questions.order(:id).where('id > ?', current_question.id).first
+  end
+
+  def set_next_question
+    self.current_question = next_question
   end
 end
