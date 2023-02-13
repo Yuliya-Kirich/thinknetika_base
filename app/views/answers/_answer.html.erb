@@ -1,10 +1,12 @@
-<tr>
-<td><%= answer.body %></td>
-<td><%= "ANS-"+answer.id.to_s %></td>
-<td><%= answer.updated_at.strftime("%d-%m-%Y %H:%M:%S")  %></td>
-<td>
-  <ul><%= button_to "Просмотреть", answer_path(answer), method: :get, :class=> "button_to2" %></ul>
-  <ul><%= button_to "Редактировать", edit_answer_path(answer), method: :get, :class=> "button_to2" %></ul>
-  <ul><%= button_to "Удалить", answer_path(answer), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить ответ?'}, :class=> "button_to2" %></ul>
-</td>
-</tr>
+<tbody>
+  <tr>
+    <td><%= answer.body %></td>
+    <td><%= "ANS-"+answer.id.to_s %></td>
+    <td><%= answer.updated_at.strftime("%d-%m-%Y %H:%M:%S")  %></td>
+    <td>
+      <ul><%= button_to "Просмотреть", answer_path(answer), method: :get, :class=> "button_to2" %></ul>
+      <ul><%= button_to "Редактировать", edit_answer_path(answer), method: :get, :class=> "button_to2" %></ul>
+      <ul><%= button_to "Удалить", answer_path(answer), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить ответ?'}, :class=> "button_to2" %></ul>
+    </td>
+  </tr>
+</tbody>

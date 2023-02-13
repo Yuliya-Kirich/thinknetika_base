@@ -20,8 +20,7 @@ class TestPassage < ApplicationRecord
   end
 
   def question_number
-    number_for_question = test.questions
-    number_for_question.index(number_for_question.find { |l| l == current_question }) + 1
+    test.questions.index(current_question) + 1
   end
 
   def correct_questions_rate
