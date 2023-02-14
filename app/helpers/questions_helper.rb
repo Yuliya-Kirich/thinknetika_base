@@ -4,6 +4,6 @@ module QuestionsHelper
                                                                                question.test.title
                                                                              else
                                                                                test.title
-                                                                             end}"), class: "strong")
+                                                                             end}"), class: 'strong')
   end
 end

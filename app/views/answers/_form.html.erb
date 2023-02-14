@@ -1,0 +1,20 @@
+<div class="rails-default-about-page">
+  <h1><%= answer_header(@answer) %></h1>
+  <%= form_with model: [@question, @answer], local: true do |form| %>
+    <%= render 'shared/errors', resource: @answer %>
+      <div class = 'main'>
+        <div class = 'field'>
+          <%= form.label "Текст ответа" %>
+          <%= form.text_area :body, id: :answer_body, placeholder:'Введите ответ на вопрос', cols:55, rows:15, maxlength: 2500 %>
+          <div class = 'button_to2'>
+            <%= form.label "Верно" %>
+            <%= form.check_box :correct, id: :answer_correct  %>
+          </div>
+          <div class = 'head_button', style="margin-left: 15%; margin-bottom: 15%">
+            <%=link_to 'Назад', :back %>
+            <%= form.submit "Сохранить", class:"button_to2" %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
