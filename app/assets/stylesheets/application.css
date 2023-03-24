@@ -119,6 +119,10 @@ input {
     border: 1px solid mediumaquamarine!important;
 }
 
+.lk1 {
+    border: 1px solid #ffffff !important;
+}
+
 td, th {
     border: solid 1px #000;
     padding: 5px;
@@ -184,7 +188,6 @@ input[type="submit"] {
     width: 80%;
     align-content: center;
     margin: 5% 0 5% 10%;
-
 }
 
 .test-result-false {
@@ -193,5 +196,9 @@ input[type="submit"] {
     width: 80%;
     align-content: center;
     margin: 5% 0 5% 10%;
-
 }
+
+.header-style {
+    margin: 2% 10% 2% 10%;
+}
+

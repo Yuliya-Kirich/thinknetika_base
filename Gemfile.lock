@@ -59,6 +59,7 @@ GEM
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
@@ -195,8 +196,6 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.5.0)
       mini_portile2 (~> 2.8.0)
-    standard (0.0.36)
-      rubocop (>= 0.63)
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.11)
@@ -231,6 +230,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
@@ -245,7 +245,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
-  standard
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
