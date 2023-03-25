@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+  validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates :email, uniqueness: true
 
   def search_test(level)

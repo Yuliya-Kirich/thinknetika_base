@@ -1,5 +1,4 @@
 class TestPassagesController < ApplicationController
-  before_action :redirect_url_remember
   before_action :set_test_passage, only: %i[show update result]
   before_action :users_spoof_check_for_test_passages
 

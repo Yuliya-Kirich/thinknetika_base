@@ -1,9 +1,6 @@
 class AnswersController < ApplicationController
-  before_action :redirect_url_remember
-  before_action :authenticate_user!
   before_action :find_question, only: %i[new create]
   before_action :set_answer, only: %i[show edit update destroy]
-  before_action :users_spoof_check, only: %i[show edit update destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_answer_not_found
 
@@ -57,7 +54,7 @@ class AnswersController < ApplicationController
 
   def users_spoof_check
     if logged_in?
-      redirect_to root_url unless current_user.id == @answer.question.test.user_id
+      redirect_to root_url if current_user.id != @answer.question.test.user_id
     else
       redirect_to login_url
     end

@@ -1,6 +1,4 @@
 class TestsController < ApplicationController
-  before_action :redirect_url_remember
-  before_action :authenticate_user!
   before_action :find_test, only: %i[show destroy edit update start]
   before_action :users_spoof_check, only: %i[show destroy start edit update]
 
@@ -9,7 +7,7 @@ class TestsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @test = Test.where(user_id: @current_user.id).order(params[:sort])
+    @test = Test.where(user_id: current_user.id).order(params[:sort])
   end
 
   def new

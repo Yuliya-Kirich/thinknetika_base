@@ -1,17 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action :authenticate_user!
+
   helper_method :current_user,
-                :logged_in?,
-                :redirect_url_remember
+                :logged_in?
 
   private
 
   def authenticate_user!
+    redirect_url_remember
     unless current_user
       redirect_to login_path, alert: 'Есть доступ в TestGuru? Проверьте пожалуйста ваш email и пароль.'
     end
-    cookies[:email] = current_user&.email
   end
 
   def current_user
@@ -23,8 +24,6 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_url_remember
-    unless current_user.present?
-      cookies[:redirect_url] = request.url
-    end
+    cookies[:redirect_url] = request.url  unless logged_in?
   end
 end

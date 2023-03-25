@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-  before_action :redirect_url_remember
   before_action :find_test, only: %i[create new]
   before_action :find_question, only: %i[show destroy edit update]
   before_action :users_spoof_check, only: %i[show destroy edit update]
