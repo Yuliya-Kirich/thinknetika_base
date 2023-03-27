@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_user!
-    redirect_url_remember
+    unless logged_in?
+      redirect_url_remember
+    end
     unless current_user
       redirect_to login_path, alert: 'Есть доступ в TestGuru? Проверьте пожалуйста ваш email и пароль.'
     end
@@ -24,6 +26,6 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_url_remember
-    cookies[:redirect_url] = request.url  unless logged_in?
+    cookies[:redirect_url] = request.url
   end
 end

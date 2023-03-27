@@ -7,8 +7,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
 
   def search_test(level)
     tests.where(level: level).where('user_id = ?', id).pluck(:title)

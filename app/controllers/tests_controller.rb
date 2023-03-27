@@ -7,7 +7,7 @@ class TestsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @test = Test.where(user_id: current_user.id).order(params[:sort])
+    @test = current_user.tests.order(params[:sort])
   end
 
   def new
