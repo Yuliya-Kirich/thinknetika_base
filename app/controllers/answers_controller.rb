@@ -51,4 +51,12 @@ class AnswersController < ApplicationController
   def rescue_with_answer_not_found
     render plain: 'Такого ответа на вопрос не занесли в списки'
   end
+
+  def users_spoof_check
+    if logged_in?
+      redirect_to root_url if current_user.id != @answer.question.test.user_id
+    else
+      redirect_to login_url
+    end
+  end
 end

@@ -1,13 +1,13 @@
 class TestsController < ApplicationController
   before_action :find_test, only: %i[show destroy edit update start]
-  before_action :set_user, only: %i[start create]
+  before_action :users_spoof_check, only: %i[show destroy start edit update]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
   skip_before_action :verify_authenticity_token
 
   def index
-    @test = Test.order(params[:sort])
+    @test = current_user.tests.order(params[:sort])
   end
 
   def new
@@ -17,7 +17,7 @@ class TestsController < ApplicationController
 
   def create
     @categories = Category.group(:number)
-    @test = @user.authored_tests.build(test_params)
+    @test = @current_user.authored_tests.build(test_params)
     if @test.save
       redirect_to @test
     else
@@ -35,8 +35,8 @@ class TestsController < ApplicationController
   end
 
   def start
-    @user.tests.push(@test)
-    redirect_to @user.test_passage(@test)
+    @current_user.tests.push(@test)
+    redirect_to @current_user.test_passage(@test)
   end
 
   def edit
@@ -66,7 +66,8 @@ class TestsController < ApplicationController
     render plain: 'Такого теста нет'
   end
 
-  def set_user
-    @user = User.first
+  def users_spoof_check
+    find_test
+    redirect_to root_url unless current_user.id == @test.user_id
   end
 end

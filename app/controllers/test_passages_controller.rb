@@ -1,5 +1,6 @@
 class TestPassagesController < ApplicationController
   before_action :set_test_passage, only: %i[show update result]
+  before_action :users_spoof_check_for_test_passages
 
   def show; end
 
@@ -18,5 +19,9 @@ class TestPassagesController < ApplicationController
 
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
+  end
+
+  def users_spoof_check_for_test_passages
+    redirect_to root_url unless current_user&.id == @test_passage.test.user_id
   end
 end

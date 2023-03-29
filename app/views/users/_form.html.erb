@@ -1,0 +1,41 @@
+<div class="rails-default-about-page">
+  <h1><%= user_header(@user) %></h1>
+    <%= form_with model: [@user], local:true do |form| %>
+    <%= render 'shared/errors', resource: @user %>
+    <div class = 'main', style="margin-left: 10%">
+      <div class="field2">
+    <table class="table_lk">
+      <tr>
+        <th class="lk"> <%= form.label 'Имя' %></th>
+        <th class="lk"><%= form.text_field :first_name, id: :user_first_name, placeholder:'Введите Имя', maxlength: 25 %></th>
+      </tr>
+      <tr>
+        <th class="lk"> <%= form.label 'Фамилия' %></th>
+        <th class="lk"><%= form.text_field :last_name, id: :user_last_name, placeholder:'Введите Фамилию', maxlength: 25 %></th>
+      </tr>
+      <tr>
+        <th class="lk"> <%= form.label 'Email' %></th>
+        <th class="lk"><%= form.text_field :email, id: :user_email, placeholder:'Введите email', maxlength: 25 %></th>
+      </tr>
+      <tr>
+        <th class="lk"> <%= form.label  'Пароль'%></th>
+        <th class="lk"><%= form.password_field :password, id: :user_password, placeholder:'Введите пароль', maxlength: 25 %></th>
+      </tr>
+      <tr>
+      <th class="lk"><%= form.label 'Повторный ввод пароля' %></th>
+      <th class="lk"><%= form.password_field :password_confirmation, id: :user_password_confirmation, placeholder:'Подтвердите пароль', maxlength: 25 %></th>
+      </tr>
+    </table>
+      </div>
+
+    <div class = 'head_button', style="margin-left: 15%; margin-bottom: 15%">
+          <p>
+            <%= link_to 'Назад', root_path %>
+          </p>
+          <p>
+            <%= form.submit 'Сохранить', class:'button_to2' %>
+          </p>
+    </div>
+    </div>
+    <% end %>
+</div>
