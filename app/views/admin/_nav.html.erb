@@ -1,0 +1,16 @@
+<header>
+  <div class="nav nav-admin">
+    <table class="nav table_lk" >
+      <th class="nav lk1_admin">
+
+        <table class="nav label" >
+          <th class="nav lk1_admin" > <%= link_to "Test Guru", root_path, id: "logo", style: "color: black" %></th>
+          <th class="nav lk1_admin"><span class="nav title_text"><%=  'ADMIN PANEL' %></span></th>
+          <th class="nav lk1_admin"><%= link_to "Выйти", destroy_user_session_path, method: :delete, style: "color: black" %></th>
+        </table>
+      </th>
+      <th class="nav lk1_admin"> <p class="nav user"> <%= (current_user.first_name).gsub(/\b./, &:upcase) %> <b>(<%= current_user.email %>)</b>, добро пожаловать в TestGuru!</p></th>
+    </table>
+  </div>
+</header>
+

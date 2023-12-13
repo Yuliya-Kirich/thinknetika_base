@@ -1,0 +1,17 @@
+User.last
+User.last.attributes
+Admin.count
+User.count
+User.last.update(type: 'Admin')
+User.count
+Admin.count
+User.find(9)
+a=Admin.new
+a
+a.attributes
+exit
+puts flash[:alert]
+flash = ActionController::Flash::FlashHash.new
+flash[:alert] = 'Your alert message'
+puts flash[:alert]
+exit

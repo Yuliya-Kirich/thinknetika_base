@@ -1,62 +1,23 @@
 class TestsController < ApplicationController
-  before_action :find_test, only: %i[show destroy edit update start]
-  before_action :users_spoof_check, only: %i[show destroy start edit update]
+  before_action :find_test, only: %i[start]
+  before_action :users_spoof_check, only: %i[start]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
-  skip_before_action :verify_authenticity_token
+  #skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
 
   def index
-    @test = current_user.tests.order(params[:sort])
+    @test = current_user.authored_tests.order(params[:sort])
   end
 
-  def new
-    @test = Test.new
-    @categories = Category.group(:number)
-  end
-
-  def create
-    @categories = Category.group(:number)
-    @test = @current_user.authored_tests.build(test_params)
-    if @test.save
-      redirect_to @test
-    else
-      render :new
-    end
-  end
-
-  def show
-    @questions = @test.questions
-  end
-
-  def destroy
-    @test.destroy
-    redirect_to tests_path
-  end
 
   def start
-    @current_user.tests.push(@test)
-    redirect_to @current_user.test_passage(@test)
-  end
-
-  def edit
-    @categories = Category.group(:number)
-  end
-
-  def update
-    @categories = Category.group(:number)
-    if @test.update(test_params)
-      redirect_to @test
-    else
-      render :edit
-    end
+    current_user.tests.push(@test)
+    redirect_to current_user.test_passage(@test)
   end
 
   private
-
-  def test_params
-    params.require(:test).permit(:title, :level, :category_id)
-  end
 
   def find_test
     @test = Test.find(params[:id])
@@ -67,7 +28,6 @@ class TestsController < ApplicationController
   end
 
   def users_spoof_check
-    find_test
     redirect_to root_url unless current_user.id == @test.user_id
   end
 end

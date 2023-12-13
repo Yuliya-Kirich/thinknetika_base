@@ -1,26 +1,25 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  before_action :authenticate_user!
+  protected
 
-  helper_method :current_user,
-                :logged_in?
-
-  private
-
-  def authenticate_user!
-    unless current_user
-      redirect_to login_path, alert: 'Есть доступ в TestGuru? Проверьте пожалуйста ваш email и пароль.'
-      redirect_url_remember
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(Admin)
+      admin_tests_path
+    else
+      root_path
     end
   end
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :full_name
   end
 
-  def logged_in?
-    current_user.present?
+  def configure_permitted_parameters
+    additional_params = [:first_name, :last_name, :email_confirmation,   {addresses_attributes: [:address1, :address2, :city, :state, :zip, :country, :name]}]
+    devise_parameter_sanitizer.permit(:sign_up, keys: additional_params)
+    devise_parameter_sanitizer.permit(:account_update, keys: additional_params)
   end
 
   def redirect_url_remember

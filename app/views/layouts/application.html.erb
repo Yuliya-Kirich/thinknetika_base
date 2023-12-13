@@ -10,14 +10,28 @@
   </head>
 
   <body>
-  <% if logged_in? %>
+  <% if user_signed_in? %>
     <header>
       <div class="header-style">
         <table class="table_lk" >
           <th class="lk1">
             <table class="label" >
               <th class="lk1"> <%= link_to "Test Guru", root_path, id: "logo" %></th>
-              <th class="lk1"><%= link_to "Выйти", logout_path, method: :delete %></th>
+              <th class="lk1"><%= link_to "Выйти", destroy_user_session_path, method: :delete %></th>
+            </table>
+          </th>
+          <th class="lk1"> <p class="nav user"> <%= (current_user.first_name).gsub(/\b./, &:upcase) %>, добро пожаловать <b>(@<%= current_user.email %>)</b> в <%= link_to TestGuru, root_path %>!</p></th>
+        </table>
+      </div>
+    </header>
+  <% elsif user_signed_in? %>
+    <header>
+      <div class="header-style">
+        <table class="table_lk" >
+          <th class="lk1">
+            <table class="label" >
+              <th class="lk1"> <%= link_to "Test Guru", root_path, id: "logo" %></th>
+              <th class="lk1"><%= link_to "Выйти", destroy_user_session_path, method: :delete %></th>
             </table>
           </th>
           <th class="lk1"> <p class="nav user"> <%= (current_user.first_name).gsub(/\b./, &:upcase) %>, добро пожаловать <b>(@<%= current_user.email %>)</b> в <%= link_to TestGuru, root_path %>!</p></th>
@@ -31,8 +45,8 @@
           <th class="lk1">
             <table class="label" >
               <th class="lk1"> <%= link_to "Test Guru", root_path, id: "logo" %></th>
-              <th class="lk1"><%= link_to "Авторизация", login_path %></th>
-              <th class="lk1"><%= link_to "Регистрация", signup_path %></th>
+              <th class="lk1"><%= link_to "Авторизация", new_user_session_path %></th>
+              <th class="lk1"><%= link_to "Регистрация", new_user_registration_path %></th>
             </table>
           </th>
           <th class="lk1"> <p class="nav user"></p></th>
@@ -41,9 +55,12 @@
     </header>
   <% end %>
 
+  <%= render 'shared/flash' %>
+
     <%= yield %>
   </body>
 
   <%= render 'shared/footer' %>
+
 
 </html>
