@@ -1,5 +1,4 @@
 class Admin::TestsController < Admin::BaseController
-
   before_action :find_test, only: %i[show destroy edit update start]
   before_action :users_spoof_check, only: %i[show destroy start edit update]
 

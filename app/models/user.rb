@@ -12,7 +12,6 @@ class User < ApplicationRecord
   has_many :tests, through: :test_passages
   has_many :authored_tests, foreign_key: :user_id, class_name: 'Test'
 
-
   validates :email, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
 
   def search_test(level)
@@ -21,5 +20,9 @@ class User < ApplicationRecord
 
   def test_passage(test)
     test_passages.order(id: :desc).find_by(test_id: test.id)
+  end
+
+  def admin?
+    is_a?(Admin)
   end
 end

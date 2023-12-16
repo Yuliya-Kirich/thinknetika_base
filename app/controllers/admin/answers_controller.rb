@@ -59,5 +59,4 @@ class Admin::AnswersController < Admin::BaseController
       redirect_to user_confirmation_url
     end
   end
-
 end

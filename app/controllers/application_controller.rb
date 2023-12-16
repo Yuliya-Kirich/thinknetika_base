@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    if resource.is_a?(Admin)
+    if resource.admin?
       admin_tests_path
     else
       root_path
@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    additional_params = [:first_name, :last_name, :email_confirmation,   {addresses_attributes: [:address1, :address2, :city, :state, :zip, :country, :name]}]
+    additional_params = [:first_name, :last_name, :email_confirmation,
+                         { addresses_attributes: %i[address1 address2 city state zip country name] }]
     devise_parameter_sanitizer.permit(:sign_up, keys: additional_params)
     devise_parameter_sanitizer.permit(:account_update, keys: additional_params)
   end

@@ -4,13 +4,12 @@ class TestsController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
-  #skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
 
   def index
     @test = current_user.authored_tests.order(params[:sort])
   end
-
 
   def start
     current_user.tests.push(@test)

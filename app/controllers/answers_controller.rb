@@ -1,6 +1,5 @@
 class Admin::AnswersController < ApplicationController
-
-  before_action :set_answer, only: %i[show ]
+  before_action :set_answer, only: %i[show]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_answer_not_found
 
@@ -27,5 +26,4 @@ class Admin::AnswersController < ApplicationController
       redirect_to user_confirmation_url
     end
   end
-
 end

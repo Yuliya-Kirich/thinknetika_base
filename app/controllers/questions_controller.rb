@@ -4,12 +4,7 @@ class Admin::QuestionsController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
-
-
   def show; end
-
-
-
 
   private
 
@@ -26,10 +21,10 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def users_spoof_check
-    if user_signed_in?
-      redirect_to root_url unless current_user.id == @question.test.user_id
-    else
+    if !user_signed_in?
       redirect_to user_confirmation_url
+    else
+      redirect_to root_url unless current_user.id == @question.test.user_id
     end
   end
 end
