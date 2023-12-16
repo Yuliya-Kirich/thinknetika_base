@@ -1,6 +1,6 @@
 <div class="rails-default-about-page">
   <h1>Тест №<%= @test.id %></h1>
-  <%= form_with model: @test, local: true do |form| %>
+  <%= form_with model: [:admin, @test], local: true do |form| %>
     <div>
     <%= form.label "Название: " %> <br>
     <%= form.label @test.title %> <br><br><br>
@@ -26,9 +26,9 @@
     <% end %>
 </div>
 <ul class="head_button2">
-  <%= button_to "Назад", tests_path(@test), method: :get, :class=> "button_to2" %>
-  <%= button_to "Редактировать", edit_test_path(@test), method: :get, :class=> "button_to2" %>
-  <%= button_to "Создать вопрос к тесту", new_test_question_path(@test.id), method: :get, :class=> "button_to2" %>
+  <%= button_to "Назад", admin_test_path(@test), method: :get, :class=> "button_to2" %>
+  <%= button_to "Редактировать", edit_admin_test_path(@test), method: :get, :class=> "button_to2" %>
+  <%= button_to "Создать вопрос к тесту", new_admin_test_question_path(@test.id), method: :get, :class=> "button_to2" %>
   <br>
 </ul>
 </div>

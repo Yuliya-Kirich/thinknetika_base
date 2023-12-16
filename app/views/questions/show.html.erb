@@ -11,9 +11,8 @@
       </div>
     </div>
   <ul class="head_button2" style="width: 30%; position:sticky; margin-left: 4%; margin-bottom: 8%; margin-top: 2%">
-    <ul style="margin: 1%"><%=button_to "Назад", test_url(@question.test), method: :get, :class=>"button_to2"%></ul>
-    <ul style="margin: 1%"><%=button_to "Редактировать", edit_question_path(@question.id), method: :get, :class=>"button_to2" %></ul>
-    <ul style="margin: 1%"><%= button_to "Новый ответ", new_question_answer_path(@question), method: :get, :class=>"button_to2" %></ul>
+    <ul style="margin: 1%"><%=button_to "Назад", admin_test_url(@question.test), method: :get, :class=>"button_to2"%></ul>
+    <ul style="margin: 1%"><%= button_to "Новый ответ", new_admin_question_answer_path(@question), method: :get, :class=>"button_to2" %></ul>
   </ul>
   <div>
     <h3>Ответы к вопросу</h3>
