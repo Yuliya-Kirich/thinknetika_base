@@ -1,5 +1,43 @@
 ru:
-  questions_new: "Создать новый"
-  clients:
+
+  hello: "Привет"
+
+  helpers:
+    submit:
+      test:
+        create: "Создать тест"
+        update: "Обновить тест"
+    label:
+      test:
+        title: "Название"
+        level: "Уровень"
+        category_id: "Категория"
+
+  tests:
     index:
-      title: Список клиентов
+      header: "Доступные тесты"
+
+  test_passages:
+    result:
+      header: "Тест %{title} завершен!"
+    show:
+      header: "Прохождение теста %{title}"
+
+  admin:
+    tests:
+      create:
+        success: "Тест успешно создан"
+      index:
+        header: "Полный список тестов"
+      new:
+        header: "Создать тест"
+      edit:
+        header: "Редактировать тест"
+      show:
+        header: "Тест № %{id}"
+
+
+
+  questions_new: "Создать новый"
+
+

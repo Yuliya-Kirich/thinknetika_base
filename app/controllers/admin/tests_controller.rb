@@ -19,7 +19,7 @@ class Admin::TestsController < Admin::BaseController
 
     if @test.save
 
-      redirect_to admin_test_url(@test)
+      redirect_to admin_test_url(@test), notice: t('.success')
     else
       render :new
     end

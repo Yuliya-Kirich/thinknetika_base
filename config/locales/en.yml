@@ -30,4 +30,38 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: "Hello"
+
+  helpers:
+    submit:
+      test:
+        create: "Create a test"
+        update: "Update the test"
+    label:
+      test:
+        title: "Title"
+        level: "Level"
+        category_id: "Category"
+
+  tests:
+    index:
+      header: "Available tests"
+
+  test_passages:
+    result:
+      header: "The test %{title} is complete!"
+    show:
+      header: "Taking the test titled %{title}"
+
+  admin:
+    tests:
+      create:
+        success: "The test has been successfully created"
+      index:
+        header: "The full list of tests"
+      new:
+        header: "Create a test"
+      edit:
+        header: "Edit a test"
+      show:
+        header: "Test № %{id}"

@@ -6,6 +6,8 @@ en:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      new:
+        header: "Resend confirmation instructions."
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
@@ -19,14 +21,19 @@ en:
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
+        header: "Welcome %{email}!"
       reset_password_instructions:
         subject: "Reset password instructions"
+        header: "Hello %{email}!"
       unlock_instructions:
         subject: "Unlock instructions"
+        header: "Hello %{email}!"
       email_changed:
         subject: "Email Changed"
+        header: "Hello %{email}!"
       password_change:
         subject: "Password Changed"
+        header: "Hello %{email}!"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
@@ -37,6 +44,10 @@ en:
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
     registrations:
+      edit:
+       header: "Edit {resource_name}"
+      new:
+       header: "Sign up"
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
@@ -46,6 +57,8 @@ en:
       updated: "Your account has been updated successfully."
       updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again."
     sessions:
+      new:
+        header: "Log in"
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."

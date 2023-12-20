@@ -1,5 +1,5 @@
 <div class="rails-default-about-page">
-  <h1>Тест №<%= @test.id %></h1>
+  <h1><%= t('.header', id: @test.id) %></h1>
   <%= form_with model: [:admin, @test], local: true do |form| %>
     <div>
     <%= form.label "Название: " %> <br>
