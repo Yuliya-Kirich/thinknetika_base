@@ -5,7 +5,7 @@ class Admin::TestsController < Admin::BaseController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
   def index
-    @test = current_user.authored_tests.order(params[:sort])
+    @test = Test.all
   end
 
   def new
@@ -19,7 +19,7 @@ class Admin::TestsController < Admin::BaseController
 
     if @test.save
 
-      redirect_to admin_test_url(@test)
+      redirect_to admin_test_url(@test), notice: t('.success')
     else
       render :new
     end

@@ -5,10 +5,10 @@
 <td><%= test_level(test) %></td>
 <td><%= test.questions.count %></td>
 <td>
-  <ul><%= button_to "Удалить", admin_test_path(test), method: :delete, data: {confirm: "Подтверждаете удаление?"}, class: "button_to2" %></ul>
-  <ul><%= button_to "Изменить", edit_admin_test_path(test), method: :get, class: "button_to2" %></ul>
-  <ul><%= button_to "Просмотреть", admin_test_path(test),  method: :get, class: "button_to2" %></ul>
-  <ul><%= button_to "Пройти тест", start_test_path(test),  class: "button_to2" %></ul>
+  <ul><%= button_to t('atributes.test.button_to.delete'), admin_test_path(test), method: :delete, data: {confirm: "Подтверждаете удаление?"}, class: "button_to2" %></ul>
+  <ul><%= button_to t('atributes.test.button_to.update'), edit_admin_test_path(test), method: :get, class: "button_to2" %></ul>
+  <ul><%= button_to t('atributes.test.button_to.show'), admin_test_path(test),  method: :get, class: "button_to2" %></ul>
+  <ul><%= button_to t('atributes.test.button_to.path'), start_test_path(test),  class: "button_to2" %></ul>
 </td>
 
 </tr>

@@ -1,5 +1,5 @@
 <div class="rails-default-about-page">
-  <h1> Прохождение теста <%= @test_passage.test.title %></h1>
+  <h1> <%= t('.header',title: @test_passage.test.title) %></h1>
   <p> Вопрос: <b><%= @test_passage.current_question.body %></b></p>
   <p> Номер текущего вопроса: <%= @test_passage.question_number %>
    из <%= @test_passage.test.questions.count %> вопросов.

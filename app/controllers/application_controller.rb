@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def default_url_options
+    { lang: I18n.locale == I18n.default_locale ? nil : I18n.locale }
+  end
 
   protected
 
@@ -25,5 +30,11 @@ class ApplicationController < ActionController::Base
 
   def redirect_url_remember
     cookies[:redirect_url] = request.url
+  end
+
+  private
+
+  def set_locale
+    I18n.locale = I18n.locale_available?(params[:lang]) != I18n.default_locale.to_s ? params[:lang] : I18n.default_locale
   end
 end

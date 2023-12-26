@@ -1,0 +1,22 @@
+ru:
+  activerecord:
+    models:
+      test: "Тест"
+      user: "Пользователь"
+      question: "Вопрос"
+      сategory: "Категория теста"
+      type_of_category: "Категория"
+
+  atributes:
+    test:
+      title: "Название"
+      button_to:
+        delete: "Удалить"
+        update: "Редактировать"
+        show: "Просмотреть"
+        path: "Пройти тест"
+        back: "Назад"
+        test_question: "Создать вопрос для теста"
+  errors:
+    message:
+      blank: "Не может быть пустым"
