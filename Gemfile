@@ -60,5 +60,3 @@ gem 'rubocop', require: false
 gem 'rails-i18n'
 
 gem 'devise', '~> 4.0'
-
-
