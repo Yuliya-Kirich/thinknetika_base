@@ -5,17 +5,28 @@ ru:
   helpers:
     submit:
       test:
-        create: "Создать тест"
-        update: "Обновить тест"
+       create: "Создать тест"
+       update: "Обновить тест"
+       submit: 'Сохранить'
+    select:
+      prompt: "Выберите значение"
+
     label:
       test:
         title: "Название"
         level: "Уровень"
         category_id: "Категория"
-
+    shared:
+      errors:
+        header:
+          few: "Обнаружено %{count} ошибки"
+          many: "Обнаружено %{count} ошибок"
+          one: "Обнаружена %{count} ошибка"
+          other: "Обнаружено %{count} ошибки"
   tests:
     index:
       header: "Доступные тесты"
+      button_to: "Создать"
 
   test_passages:
     result:
@@ -36,8 +47,6 @@ ru:
       show:
         header: "Тест № %{id}"
 
-
-
-  questions_new: "Создать новый"
-
-
+  tests_mailer:
+    completed_test:
+      subject: "Вы успешно завершили тест на TestGuru!"

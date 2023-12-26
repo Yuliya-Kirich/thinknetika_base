@@ -9,18 +9,35 @@ ru:
     new: "Создать новый "
 
   activerecord:
-    models:
-      test: Тест
-      shared:
-        errors:
-          test:
-          question:
+    model:
+      test: "Тест"
+      question: "Вопрос"
+      answer: "Ответ"
+      category: "Категорию теста"
 
     attributes:
       test:
         title: "Наименование теста"
         level: "Уровень теста"
         category_id: "Категория"
+        category: "Категория"
         user_id: "Пользователь"
+        user: "Пользователь"
       question:
         body: "Содержание вопроса"
+
+  shared:
+    errors:
+      test: "Тест"
+      question: "Вопрос"
+      category: "Категория"
+      user: "Пользователь"
+      title: "Наименование"
+
+    message:
+      test: "Тест"
+      question: "Вопрос"
+      category: "Категория"
+      user: "Пользователь"
+      title: "Наименование"
+

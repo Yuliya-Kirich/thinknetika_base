@@ -2,11 +2,19 @@ en:
   activerecord:
     models:
       test: "Test"
-
+      question: "Question"
+      сategory: "Category"
+      type_of_category: "Type of category"
   atributes:
     test:
       title: "Title"
-
+      button_to:
+        delete: "Delete"
+        update: "Update"
+        show: "Show"
+        path: "Start"
+        back: "Back"
+        test_question: "Create a question for the test"
   errors:
     message:
       blank: "Title can't be blank"

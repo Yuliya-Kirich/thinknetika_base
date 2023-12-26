@@ -8,7 +8,7 @@ class TestsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @test = current_user.authored_tests.order(params[:sort])
+      @test = current_user.authored_tests.order(params[:sort]).d
   end
 
   def start

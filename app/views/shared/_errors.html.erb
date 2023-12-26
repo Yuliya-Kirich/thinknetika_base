@@ -2,7 +2,7 @@
     <div class="error_message">
       <br><br>
   <div>
-    <h4>Найдено ошибок: <%=pluralize(resource.errors.count, '')%></h4>
+    <h4><%= t('helpers.shared.errors.header', count: resource.errors.count) %>:</h4>
     <p>
       <%resource.errors.full_messages.each do |message| %>
         <li><%=message %></li>
