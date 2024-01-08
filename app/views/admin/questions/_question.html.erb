@@ -1,11 +1,14 @@
-<tr>
-  <td><%= question_counter + 1 %></td>
-  <td class="collection_select"><%= link_to question.body, admin_question_path(question) %></td>
-  <td><%= 'Que-'+question.id.to_s %></td>
-  <td><%= question.updated_at.strftime("%d-%m-%Y %H:%M:%S") %></td>
-  <td>
-    <ul><%= button_to "Удалить", admin_question_path(id: question.id), method: :delete,  data: {confirm: "Подтверждаете удаление?"}, class: "button_to2" %></ul>
-    <ul><%= button_to "Редактировать", edit_admin_question_path(id: question.id), method: :get, class: "button_to2" %></ul>
-    <ul><%= button_to "Просмотреть",admin_question_path(question),  method: :get, class: "button_to2" %></ul>
+<tr >
+  <td class="border-primary"><%= question_counter + 1 %></td>
+  <td class="border-primary"><%= link_to question.body, admin_question_path(question), class: "btn btn-link" %></td>
+  <td class="border-primary"><%= 'Que-' + question.id.to_s %></td>
+  <td class="border-primary"><%= question.updated_at.strftime("%d-%m-%Y %H:%M:%S") %></td>
+  <td class="border-primary">
+    <div class="btn-group-vertical" role="group">
+      <%= button_to "Удалить", admin_question_path(id: question.id), method: :delete, data: { confirm: "Подтверждаете удаление?" }, class: "btn btn-secondary btn-block mb-2" %>
+      <%= button_to "Редактировать", edit_admin_question_path(id: question.id), method: :get, class: "btn btn-secondary btn-block mb-2" %>
+      <%= button_to "Просмотреть", admin_question_path(question), method: :get, class: "btn btn-secondary btn-block mb-2" %>
+    </div>
   </td>
 </tr>
+

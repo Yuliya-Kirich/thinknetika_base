@@ -1,4 +1,12 @@
-<div class="rails-default-about-page">
-  <h1><%= t("admin.tests.edit.header") %>></h1>
-  <%= render 'form' %>
+<div class="container mt-5 bg-primary-subtle p-4 text-center" style="width: 86%; margin: 0 auto;">
+
+<h1 class="fw-bold text-uppercase" style="font-family: 'Verdana', sans-serif;"><%= t("admin.tests.edit.header") %></h1>
+  <div >
+    <%= render 'shared/flash', resource: @test %>
+  </div>
+  <div>
+    <%= render 'shared/errors', resource: @test %>
+  </div>
+    <%= render 'form' %>
+
 </div>

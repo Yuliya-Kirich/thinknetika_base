@@ -1,5 +1,5 @@
-<div class="rails-default-about-page">
-  <h1>Вопрос для теста "<%= @question.test.title%>"</h1>
+<div class="container mt-5 bg-primary-subtle p-4 text-center " style="width: 86%; margin: 0 auto;">
+  <h1 class="fw-bold text-uppercase" style="font-family: 'Verdana', sans-serif;">Блок ответов к вопросу "<%= @question.body%>" к тесту "<%= @question.test.title%>"</h1>
     <input name="authenticity_token" value="<%=form_authenticity_token%>" type="hidden"><br>
     <div class="box">
       <div class="field">
@@ -8,24 +8,37 @@
         <p > <label for = "question-updated" > Обновлен: </label> </p>
         <p style = "text-align:left; margin: 5px 5px 5px 55px" type="text" name="question[updated]" id="question-updated" ><%= @question.updated_at.strftime("%d-%m-%Y %H:%M:%S")%></p><br>
         </table>
+
+        <div class="row mt-3">
+          <div class="col-md-2">
+            <%= link_to t('atributes.test.button_to.back'), admin_test_path(@question.test), class: "btn btn-outline-light" %>
+          </div>
+        </div>
       </div>
     </div>
-  <ul class="head_button2" style="width: 30%; position:sticky; margin-left: 4%; margin-bottom: 8%; margin-top: 2%">
-    <ul style="margin: 1%"><%=button_to "Назад", admin_test_url(@question.test), method: :get, :class=>"button_to2"%></ul>
-    <ul style="margin: 1%"><%= button_to "Новый ответ", new_admin_question_answer_path(@question), method: :get, :class=>"button_to2" %></ul>
-  </ul>
-  <div>
-    <h3>Ответы к вопросу</h3>
-        <table  class="table" style="margin-bottom: 10%" >
-        <tr>
-          <th class="collection_select">Вопрос</th>
-          <th>Код вопроса</th>
-          <th>Дата обновления</th>
-          <th> </th>
-        </tr>
-        <%= render @question.answers %>
 
+
+
+  <div>
+    <h1 class="fw-bold text-uppercase" style="font-family: 'Verdana', sans-serif;">Ответы на вопрос</h1>
+    <div>
+      <% if @question.answers.present? %>
+        <table  class="table table-bordered border-primary" style="margin-bottom: 10%" >
+          <thead>
+        <tr>
+          <th scope="col" class="border-primary">Вопрос</th>
+          <th scope="col" class="border-primary">Код вопроса</th>
+          <th scope="col" class="border-primary">Дата обновления</th>
+          <th scope="col" class="border-primary"> </th>
+        </tr>
+          </thead>
+          <tbody >
+        <%= render @question.answers %>
+          </tbody>
     </table>
+      <% else %>
+        <p>Для данного вопроса не создавались варианты ответов</p>
+        <%end %>
+    </div>
   </div>
-</div>
 </div>

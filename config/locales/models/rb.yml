@@ -1,5 +1,6 @@
 ru:
 
+  show: "Просмотреть"
   new: "Создать новый "
   edit: "Редактировать "
   create: "Создать новый "
@@ -7,6 +8,7 @@ ru:
 
   action_name:
     new: "Создать новый "
+    show: "Просмотреть"
 
   activerecord:
     model:

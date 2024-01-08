@@ -1,3 +1,18 @@
-<div class="rails-default-about-page">
-<%= render 'form' %>
+<div class="container mt-5 bg-primary-subtle p-4 text-center" style="width: 86%; margin: 0 auto;">
+  <h1 class="fw-bold text-uppercase" style="font-family: 'Verdana', sans-serif;"><%= question_header(@test, @question) %></h1>
+   <div >
+     <%= render 'shared/flash', resource: @question %>
+   </div>
+   <div>
+   <%= render 'shared/errors', resource: @question %>
+   </div>
+   <%= render 'form' %>
+  <div class="row">
+    <div class="col-md-6 mb-3 text-md-start">
+      <%= link_to t('atributes.test.button_to.back'), admin_test_questions_path(test_id: @question.test_id), class: "btn btn-outline-light" %>
+    </div>
+    <div class="col-md-6 text-md-start">
+      <p><%= f.submit "Сохранить", class: "btn btn-primary" %></p>
+    </div>
+  </div>
 </div>

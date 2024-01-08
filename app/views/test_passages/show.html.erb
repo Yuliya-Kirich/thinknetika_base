@@ -1,16 +1,30 @@
-<div class="rails-default-about-page">
-  <h1> <%= t('.header',title: @test_passage.test.title) %></h1>
-  <p> Вопрос: <b><%= @test_passage.current_question.body %></b></p>
-  <p> Номер текущего вопроса: <%= @test_passage.question_number %>
-   из <%= @test_passage.test.questions.count %> вопросов.
+<div class="container mt-5 bg-secondary-subtle" style="width: 86%; margin: 0 auto; padding-top: 7%; ">
+  <h1 class="fw-bold text-uppercase d-flex align-items-center justify-content-center" style="margin-top: 7%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333;">
+    <%= t('.header', title: @test_passage.test.title) %>
+  </h1>
+
+  <p class="mb-3">Вопрос: <b><%= @test_passage.current_question.body %></b></p>
+
+  <p>
+    Номер текущего вопроса: <%= @test_passage.question_number %> из <%= @test_passage.test.questions.count %> вопросов.
   </p>
-  <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form|%>
-    <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b|%>
-      <p>
-        <%= b.check_box id: "answer_ids_#{b.object.id}" %>
-        <%= b.label %>
-      </p>
+
+  <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |f| %>
+    <%= f.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
+      <div class="form-check mb-2">
+        <%= b.check_box class: "form-check-input", id: "answer_ids_#{b.object.id}" %>
+        <%= b.label class: "form-check-label" %>
+      </div>
+      <div></div>
     <% end %>
-    <p><%= form.submit "Подтвердить" %></p>
+
+    <div class="row">
+      <div class="col-md-12 text-md-start">
+        <p><%= f.submit "Подтвердить", class: "btn btn-primary" %></p>
+      </div>
+    </div>
+
   <% end %>
+
 </div>
+
