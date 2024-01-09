@@ -59,4 +59,7 @@ gem 'rubocop', require: false
 
 gem 'rails-i18n'
 
+gem 'bootstrap', '~> 5.3.2'
+gem 'bootstrap_form', '~> 5.0'
 gem 'devise', '~> 4.0'
+gem 'jquery-rails'

@@ -1,4 +1,4 @@
-class Admin::QuestionsController < ApplicationController
+class QuestionsController < ApplicationController
   before_action :find_question, only: %i[show]
   before_action :users_spoof_check, only: %i[show]
 

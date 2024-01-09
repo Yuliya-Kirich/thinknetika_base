@@ -5,8 +5,6 @@
     <td><%= answer.updated_at.strftime("%d-%m-%Y %H:%M:%S")  %></td>
     <td>
       <ul><%= button_to "Просмотреть", admin_answer_path(answer), method: :get, :class=> "button_to2" %></ul>
-      <ul><%= button_to "Редактировать", edit_admin_answer_path(answer), method: :get, :class=> "button_to2" %></ul>
-      <ul><%= button_to "Удалить", admin_answer_path(answer), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить ответ?'}, :class=> "button_to2" %></ul>
     </td>
   </tr>
 </tbody>

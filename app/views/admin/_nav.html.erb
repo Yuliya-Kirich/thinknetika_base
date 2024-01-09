@@ -1,16 +1,36 @@
-<header>
-  <div class="nav nav-admin">
-    <table class="nav table_lk" >
-      <th class="nav lk1_admin">
+<nav class="navbar navbar-light bg-primary fixed-top", style= "width: 82%; margin: 0 auto;" data-bs-theme="dark" >
 
-        <table class="nav label" >
-          <th class="nav lk1_admin" > <%= link_to "Test Guru", root_path, id: "logo", style: "color: black" %></th>
-          <th class="nav lk1_admin"><span class="nav title_text"><%=  'ADMIN PANEL' %></span></th>
-          <th class="nav lk1_admin"><%= link_to "Выйти", destroy_user_session_path, method: :delete, style: "color: black" %></th>
-        </table>
-      </th>
-      <th class="nav lk1_admin"> <p class="nav user"> <%= (current_user.first_name).gsub(/\b./, &:upcase) %> <b>(<%= current_user.email %>)</b>, добро пожаловать в TestGuru!</p></th>
-    </table>
-  </div>
-</header>
+  <div class="container" >
+        <style>
+            .navbar-brand {
+                border: none !important;
+                outline: none !important;
+            }
 
+            .table_lk th {
+                border: none !important;
+            }
+        </style>
+
+        <div class="nav lk1_admin d-flex justify-content-between align-items-center w-100">
+          <div class="nav label">
+            <%= link_to "Test Guru", admin_tests_path, id: "logo", class: "navbar-brand", style: "color: black" %>
+          </div>
+          <div class="nav title_text fs-4 fw-bold ms-3">
+            <%= 'ADMIN PANEL' %>
+          </div>
+
+          <div class="nav lk1_admin ms-auto">
+            <%= link_to "Выйти", destroy_user_session_path, method: :delete, class: "btn btn-outline-light", style: "color: black" %>
+          </div>
+
+        </div>
+      </div>
+      <div class="container">
+        <div class="nav lk1_admin text-end mt-2">
+          <p class="nav user mb-0">
+            <%= (current_user.first_name).gsub(/\b./, &:upcase) %> <b>(<%= current_user.email %>)</b>, добро пожаловать в TestGuru!
+          </p>
+        </div>
+      </div>
+</nav>

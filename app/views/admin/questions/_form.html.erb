@@ -1,16 +1,15 @@
-<div class="rails-default-about-page">
-  <h1><%= question_header(@test, @question) %></h1>
-    <%= form_with model: [:admin, @test, @question], local:true do |form| %>
-      <%= render 'shared/errors', resource: @question %>
-      <div class="main">
-        <div class="field">
-          <%= form.label "Текст вопроса" %>
-          <%= form.text_area :body, id: :question_body, placeholder:"Введите вопрос", cols:55, rows:15, maxlength: 2500 %>
-        </div>
-          <div class="head_button", style="margin-left: 18%; margin-bottom: 15%">
-          <%=link_to 'Назад', :back%>
-          <p><%= form.submit "Сохранить", class: "button_to2" %></p>
-        </div>
+<%= bootstrap_form_with model: [:admin, @test, @question], local: true, html: { class: 'bg-info' } do |f| %>
+  <div class="bg-primary-subtle p-4">
+    <div class="mb-3">
+      <%= f.text_area :body, id: :question_body, placeholder: "Введите вопрос", cols: 55, rows: 15, maxlength: 2500, class: "form-control" %>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3 text-md-start">
+        <%= link_to t('atributes.test.button_to.back'), root_url, class: "btn btn-outline-light" %>
       </div>
-    <% end %>
-</div>
+      <div class="col-md-6 text-md-start">
+        <p><%= f.submit "Сохранить", class: "btn btn-primary" %></p>
+      </div>
+    </div>
+  </div>
+<% end %>

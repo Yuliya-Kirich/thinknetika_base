@@ -1,36 +1,55 @@
-<div class="rails-default-about-page">
-  <h1><%= t('.header', id: @test.id) %></h1>
-  <%= form_with model: [:admin, @test], local: true do |form| %>
-    <div>
-    <%= form.label "Название: " %> <br>
-    <%= form.label @test.title %> <br><br><br>
-    <%= form.label "Уровень: " %> <br>
-    <%= form.label @test.level %> <br><br><br>
-    <%= form.label "Категория: " %> <br>
-    <%= form.label @test.category.type_of_category %> <br><br><br>
-  <%end %>
-<div>
-  <%if @test.questions.present?%>
-  <table  class="table">
-    <tr>
-      <th>Номер вопроса</th>
-      <th class="collection_select">Вопрос</th>
-      <th>Код вопроса</th>
-      <th>Дата обновления</th>
-      <th> </th>
-    </tr>
-    <%= render @test.questions %>
-  </table>
+<div class="container mt-5 bg-primary-subtle p-4 text-center " style="width: 86%; margin: 0 auto;">
+  <h1 class="fw-bold text-uppercase" style="font-family: 'Verdana', sans-serif;">
+    <%= t('.header', id: @test.id) %>
+  </h1>
+
+  <%= bootstrap_form_with model: [:admin, @test], local: true do |f| %>
+    <div class="mb-3">
+      <%= f.label "Наименование", class: "form-label" %>
+      <%= f.label @test.title, class: "form-control-plaintext" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label "Уровень:", class: "form-label" %>
+      <%= f.label @test.level, class: "form-control-plaintext" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label "Категория:", class: "form-label" %>
+      <%= f.label @test.category.type_of_category, class: "form-control-plaintext" %>
+    </div>
+  <% end %>
+
+  <div>
+    <% if @test.questions.present? %>
+      <table class="table table-bordered border-primary">
+        <thead>
+        <tr>
+          <th scope="col" class="border-primary">Номер вопроса</th>
+          <th scope="col" class="border-primary collection_select">Вопрос</th>
+          <th scope="col" class="border-primary">Код вопроса</th>
+          <th scope="col" class="border-primary">Дата обновления</th>
+          <th scope="col" class="border-primary"></th>
+        </tr>
+        </thead>
+        <tbody >
+        <%= render @test.questions %>
+        </tbody>
+      </table>
     <% else %>
-  <p> Для данного теста вопросов не создано </p>
+      <p>Для данного теста вопросов не создано</p>
     <% end %>
-</div>
-<ul class="head_button2">
-  <%= button_to t('atributes.test.button_to.back'),  admin_tests_path(@test), method: :get, :class=> "button_to2" %>
-  <%= button_to t('atributes.test.button_to.update'), edit_admin_test_path(@test), method: :get, :class=> "button_to2" %>
-  <%= button_to t('atributes.test.button_to.test_question'), new_admin_test_question_path(@test.id), method: :get, :class=> "button_to2" %>
-  <br>
-</ul>
-</div>
-    <br><br><br>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-4">
+      <%= link_to t('atributes.test.button_to.back'), admin_test_path(@test), class: "btn btn-outline-light" %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to t('atributes.test.button_to.update'), edit_admin_test_path(@test), class: "btn btn-primary btn-block text-white" %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to t('atributes.test.button_to.test_question'), new_admin_test_question_path(@test.id), class: "btn btn-primary btn-block text-white" %>
+    </div>
+  </div>
 </div>

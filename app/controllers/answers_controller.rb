@@ -1,5 +1,6 @@
-class Admin::AnswersController < ApplicationController
+class AnswersController < ApplicationController
   before_action :set_answer, only: %i[show]
+  before_action :users_spoof_check, only: %i[show]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_answer_not_found
 

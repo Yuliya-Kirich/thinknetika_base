@@ -1,0 +1,63 @@
+<nav class="navbar navbar-light bg-light fixed-top", style= "width: 82%; margin: 0 auto;" data-bs-theme="dark">
+
+      <% if user_signed_in?%>
+    <div class="container" >
+      <style>
+          .navbar-brand {
+              border: none !important;
+              outline: none !important;
+          }
+
+          .table_lk th {
+              border: none !important;
+          }
+      </style>
+
+      <div class="nav lk1_admin d-flex justify-content-between align-items-center w-100">
+        <div class="nav label">
+          <%= link_to "Test Guru", root_path, id: "logo", class: "navbar-brand", style: "color: black" %>
+        </div>
+
+
+        <p class="lk1 nav user"> <%= (current_user.first_name).gsub(/\b./, &:upcase) %> (@<%= current_user.email %>) добро пожаловать в   <%= link_to TestGuru, root_path %>!</p>
+
+
+      <div class="nav lk1_admin ms-auto">
+        <%= link_to "Выйти", destroy_user_session_path, method: :delete, class: "btn btn-outline-light", style: "color: black" %>
+      </div>
+      </div>
+
+<% else %>
+        <header>
+          <div class="header-style">
+            <table class="table_lk" >
+              <style>
+                  .navbar-brand {
+                      border: none !important;
+                      outline: none !important;
+                      border-radius: 8px;
+                  }
+
+                  .navbar-brand:hover {
+                      background-color: #0d6efd !important;
+                  }
+
+                  .table_lk th {
+                      border: none !important;
+                  }
+              </style>
+              <th class="lk1">
+                <table class="label" >
+                  <th class="lk1"> <%= link_to "Test Guru", root_path, id: "logo", class: "navbar-brand"  %></th>
+                  <th class="lk1"><%= link_to "Авторизация", new_user_session_path , class: "navbar-brand"%></th>
+                  <th class="lk1"><%= link_to "Регистрация", new_user_registration_path , class: "navbar-brand"%></th>
+                </table>
+              </th>
+              <th class="lk1"> <p class="nav user"></p></th>
+            </table>
+          </div>
+        </header>
+      <% end %>
+    </div>
+  </div>
+</nav>

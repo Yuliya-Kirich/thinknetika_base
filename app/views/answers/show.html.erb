@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<div class="rails-default-about-page">
-  <h1>Ответ на вопрос "<%=@answer.question.body%>"</h1>
+<div class="container mt-5 bg-primary-subtle p-4 text-center mb-4" style="width: 86%; margin: 0 auto;">
+  <h1 class="fw-bold text-uppercase" style="font-family: 'Verdana', sans-serif;">Ответ на вопрос "<%=@answer.question.body%>"</h1>
   <input name="authenticity_token" value="<%=form_authenticity_token%>" type="hidden"><br>
   <div class="box">
     <div class="field">
