@@ -1,6 +1,6 @@
 class TestPassagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_test_passage, only: %i[show update result]
+  before_action :set_test_passage, only: %i[show update result gist]
   before_action :users_spoof_check_for_test_passages
 
   def show; end
@@ -16,6 +16,16 @@ class TestPassagesController < ApplicationController
     else
       render :show
     end
+  end
+
+  def gist
+    result = GistQuestionService.new(@test_passage.current_question).call
+    flash_options = if result.present?
+                      {notice: t('.success', url: result.url.to_s)}
+                    else
+                      {alert: t('.failure') }
+                    end
+    redirect_to @test_passage, flash_options
   end
 
   private

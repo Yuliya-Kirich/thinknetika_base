@@ -63,3 +63,5 @@ gem 'bootstrap', '~> 5.3.2'
 gem 'bootstrap_form', '~> 5.0'
 gem 'devise', '~> 4.0'
 gem 'jquery-rails'
+gem "octokit", "~> 5.0"
+gem 'dotenv-rails'

@@ -18,8 +18,10 @@
       <div></div>
     <% end %>
 
+
     <div class="row">
       <div class="col-md-12 text-md-start">
+        <p><%= link_to "Gist Question", gist_test_passage_path(@test_passage), method: :post, class: "btn btn-primary" %></p>
         <p><%= f.submit "Подтвердить", class: "btn btn-primary" %></p>
       </div>
     </div>
