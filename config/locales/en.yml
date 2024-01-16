@@ -59,7 +59,7 @@ en:
     show:
       header: "Taking the test titled %{title}"
     gist:
-      failure: "An error occurred while saving the gist"
+      failure: "An error occurred while saving the gists"
       success: "Gist successfully saved: %{url}"
 
   admin:

@@ -34,10 +34,15 @@ ru:
       header: "Тест %{title} завершен!"
     show:
       header: "Прохождение теста %{title}"
-    gist:
-      failure: "Во время сохранения gist произошла ошибка"
+    gists:
+      failure: "Во время сохранения gists произошла ошибка"
       success: "Gist успешно сохранен: %{url}"
-
+      not_success: "Во время сохранения Gist что то пошло не так!"
+    gist:
+      failure: "Во время сохранения gists произошла ошибка"
+      success: "Gist успешно сохранен: %{url}"
+      not_success: "Во время сохранения Gist что то пошло не так!"
+      save_gist: "Сохранить Gist на Вопрос"
   admin:
     tests:
       create:
