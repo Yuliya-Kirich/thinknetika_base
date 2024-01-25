@@ -1,5 +1,5 @@
 <div class="container mt-5 bg-secondary-subtle" style="width: 86%; margin: 0 auto; padding-top: 7%; ">
-  <h1 class="fw-bold text-uppercase d-flex align-items-center justify-content-center" style="margin-top: 7%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333;">
+    <h1 class="fw-bold text-uppercase d-flex align-items-center justify-content-center" style="margin-top: 7%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333;">
     <%= t('.header', title: @test_passage.test.title) %>
   </h1>
 
@@ -21,7 +21,8 @@
 
     <div class="row">
       <div class="col-md-12 text-md-start">
-        <p><%= link_to t('test_passages.gist.save_gist'), gist_test_passage_path(@test_passage), method: :post, class: "btn btn-primary" %></p>
+        <p><%= link_to t('test_passages.gist.save_gist'), gists_path(test_passage_id: @test_passage.id), method: :post, class: "btn btn-primary" %></p>
+
         <p><%= f.submit "Подтвердить", class: "btn btn-primary" %></p>
       </div>
     </div>

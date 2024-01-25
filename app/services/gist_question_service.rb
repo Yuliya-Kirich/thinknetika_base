@@ -12,7 +12,11 @@ class GistQuestionService
   end
 
   def call
-    @client.create_gist(gist_params)
+    @gist_client = @client.create_gist(gist_params)
+  end
+
+  def self.success?
+    Octokit::Client.last_response.success?
   end
 
   private
