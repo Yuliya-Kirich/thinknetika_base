@@ -15,10 +15,6 @@ class GistQuestionService
     @gist_client = @client.create_gist(gist_params)
   end
 
-  def self.success?
-    Octokit::Client.last_response.success?
-  end
-
   private
 
   def gist_params
