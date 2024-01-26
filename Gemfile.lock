@@ -301,6 +301,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise (~> 4.0)
+  dotenv
   dotenv-rails
   jbuilder (~> 2.7)
   jquery-rails

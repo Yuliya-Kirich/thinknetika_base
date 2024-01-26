@@ -1,6 +1,10 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'dotenv/load'
+
+dotenv_file = '/Users/yk/Documents/.env'
+Dotenv.load(dotenv_file) if File.exist?(dotenv_file)
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
