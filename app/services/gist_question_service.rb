@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'octokit'
-
 class GistQuestionService
   ACCESS_TOKEN = ENV['GITHUB_TOKEN']
 
@@ -13,6 +11,14 @@ class GistQuestionService
 
   def call
     @gist_client = @client.create_gist(gist_params)
+  end
+
+  def last_response
+    @last_response = @client.last_response
+  end
+
+  def success?
+    @last_response.status >= 200 && @last_response.status < 300
   end
 
   private

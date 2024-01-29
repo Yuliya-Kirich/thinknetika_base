@@ -30,7 +30,7 @@ ru:
       button_to: "Создать"
   gists:
     create:
-      failure: "Во время сохранения gists произошла ошибка %{url}"
+      failure: "Воn время сохранения gists произошла ошибка"
       success: "Gist успешно сохранен: %{url}"
   test_passages:
     result:
@@ -38,7 +38,7 @@ ru:
     show:
       header: "Прохождение теста %{title}"
     gists:
-      failure: "Во время сохранения gists произошла ошибка %{url}"
+      failure: "Во время сохранения gists произошла ошибка"
       success: "Gist успешно сохранен: %{url}"
       not_success: "Во время сохранения Gist что то пошло не так!"
     gist:
