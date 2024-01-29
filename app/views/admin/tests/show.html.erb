@@ -2,7 +2,9 @@
   <h1 class="fw-bold text-uppercase" style="font-family: 'Verdana', sans-serif;">
     <%= t('.header', id: @test.id) %>
   </h1>
-
+  <%= render 'devise/shared/error_messages', resource: @test %>
+  <%= render 'shared/errors', resource: @test %>
+  <%= render 'shared/flash', resource: @test %>
   <%= bootstrap_form_with model: [:admin, @test], local: true do |f| %>
     <div class="mb-3">
       <%= f.label "Наименование", class: "form-label" %>

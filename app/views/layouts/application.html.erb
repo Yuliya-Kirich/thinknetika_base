@@ -42,12 +42,24 @@
           border: none !important;
           outline: none !important;
       }
+      .flash-messages {
+          position: fixed;
+          top: 20%;
+          left: 0;
+          right: 0;
+
+      }
   </style>
 </head>
 <body>
+<div>
+
     <%= render 'shared/nav', class: 'fixed-top' %>
+  <div class="alert fixed-top flash-messages">
     <%= render 'shared/flash' %>
-    <div>
+
+</div>
+
         <%= yield  %>
     </div>
 </body>

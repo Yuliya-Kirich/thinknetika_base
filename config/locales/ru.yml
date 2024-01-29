@@ -28,12 +28,24 @@ ru:
     index:
       header: "Доступные тесты"
       button_to: "Создать"
-
+  gists:
+    create:
+      failure: "Воn время сохранения gists произошла ошибка"
+      success: "Gist успешно сохранен: %{url}"
   test_passages:
     result:
       header: "Тест %{title} завершен!"
     show:
       header: "Прохождение теста %{title}"
+    gists:
+      failure: "Во время сохранения gists произошла ошибка"
+      success: "Gist успешно сохранен: %{url}"
+      not_success: "Во время сохранения Gist что то пошло не так!"
+    gist:
+      failure: "Во время сохранения gists произошла ошибка %{url}"
+      success: "Gist успешно сохранен: %{url}"
+      not_success: "Во время сохранения Gist что то пошло не так!"
+      save_gist: "Сохранить Gist на Вопрос"
 
   admin:
     tests:
@@ -47,7 +59,15 @@ ru:
         header: "Редактировать тест"
       show:
         header: "Тест № %{id}"
+    gists:
+      failure: "Ошибка в Gist"
+      create:
+        failure: "Не удалось создать Gist"
+
 
   tests_mailer:
     completed_test:
       subject: "Вы успешно завершили тест на TestGuru!"
+
+  gist_question_service:
+    description: "A question about from TestGuru"

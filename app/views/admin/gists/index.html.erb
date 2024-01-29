@@ -1,0 +1,25 @@
+<div class="container mt-5 bg-primary-subtle p-4 text-center" style="width: 86%; margin: 0 auto;">
+  <h1 class="fw-bold text-uppercase" style="font-family: 'Verdana', sans-serif;">Полный список Gist</h1>
+    <div>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead class="table-light">
+          <tr>
+            <th scope="col"><%=link_to "Ворос"%></th>
+            <th scope="col"><%= link_to "Gist URL", :sort => "@gist_url" %></th>
+            <th scope="col"><%= link_to "Пользователь", :sort => "@user.email" %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <%= render @gist %>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="row mt-3">
+      <div class="col-md-4">
+        <%= link_to t('atributes.test.button_to.back'), root_path, class: "btn btn-outline-light" %>
+      </div>
+      </div>
+</div>
+</div>

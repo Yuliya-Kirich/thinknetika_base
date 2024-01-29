@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_231_129_222_642) do
+ActiveRecord::Schema.define(version: 20_240_113_225_243) do
   create_table 'admins', force: :cascade do |t|
     t.string 'email', default: '', null: false
     t.string 'encrypted_password', default: '', null: false
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(version: 20_231_129_222_642) do
     t.integer 'number', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+  end
+
+  create_table 'gists', force: :cascade do |t|
+    t.integer 'question_id', null: false
+    t.integer 'test_passage_id', null: false
+    t.integer 'user_id', null: false
+    t.string 'gist_url'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['question_id'], name: 'index_gists_on_question_id'
+    t.index ['test_passage_id'], name: 'index_gists_on_test_passage_id'
+    t.index ['user_id'], name: 'index_gists_on_user_id'
   end
 
   create_table 'questions', force: :cascade do |t|
@@ -94,6 +106,9 @@ ActiveRecord::Schema.define(version: 20_231_129_222_642) do
   end
 
   add_foreign_key 'answers', 'questions'
+  add_foreign_key 'gists', 'questions'
+  add_foreign_key 'gists', 'test_passages'
+  add_foreign_key 'gists', 'users'
   add_foreign_key 'questions', 'tests'
   add_foreign_key 'test_passages', 'questions', column: 'current_question_id'
   add_foreign_key 'test_passages', 'tests'
