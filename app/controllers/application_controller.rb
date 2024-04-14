@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
     { lang: I18n.locale == I18n.default_locale ? nil : I18n.locale }
   end
 
+  def password_validation
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   protected
 
   def after_sign_in_path_for(resource)

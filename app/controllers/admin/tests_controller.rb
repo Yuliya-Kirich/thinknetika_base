@@ -6,7 +6,11 @@ class Admin::TestsController < Admin::BaseController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
   def index
-    @test = Test.all
+    @tests = Test.all
+    return unless params[:sort] && %w[title].include?(params[:sort])
+
+    sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    @tests = Test.order(title: sort_direction)
   end
 
   def new

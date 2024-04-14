@@ -21,10 +21,9 @@
 
         <p class="lk1 nav user"> <%= (current_user.first_name).gsub(/\b./, &:upcase) %> (@<%= current_user.email %>) добро пожаловать в   <%= link_to TestGuru, root_path %>!</p>
 
-
-      <div class="nav lk1_admin ms-auto">
-        <%= link_to "Выйти", destroy_user_session_path, method: :delete, class: "btn btn-outline-light", style: "color: black" %>
-      </div>
+        <div class="nav lk1_admin ms-auto">
+          <%= button_to "Выйти", destroy_user_session_path, method: :delete, form: { class: 'd-inline' }, class: "btn btn-outline-light btn-lg", style: "padding: 0.5rem 1.5rem; border-radius: 0.2rem; text-align: center;" %>
+        </div>
       </div>
 
 <% else %>
