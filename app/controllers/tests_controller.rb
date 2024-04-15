@@ -8,8 +8,13 @@ class TestsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @test = current_user.authored_tests.order(params[:sort])
+    @test = current_user.authored_tests
     redirect_to admin_tests_path if current_user.admin?
+    @tests = Test.all
+    return unless params[:sort] && %w[title].include?(params[:sort])
+
+    sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    @tests = Test.order(title: sort_direction)
   end
 
   def start

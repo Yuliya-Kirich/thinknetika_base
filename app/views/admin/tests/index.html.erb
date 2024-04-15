@@ -3,22 +3,32 @@
     <%= t('admin.tests.index.header') %>
   </h1>
 
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered">
-      <thead class="table-light">
+  <turbo-frame id="tests">
+    <table class="table" id="tests-table">
+
       <tr>
-        <th scope="col"><%= link_to "Идентификатор теста", :sort => "id" %></th>
-        <th scope="col"><%= link_to "Тест", :sort => "title" %></th>
-        <th scope="col"><%= link_to "Дата обновления", :sort => "updated_at" %></th>
-        <th scope="col"><%= link_to "Уровень", :sort => "level" %></th>
-        <th scope="col">Количество вопросов</th>
+        <th> Идентификатор теста</th>
+        <th>
+          <% current_direction = params[:direction] == 'asc' ? 'desc' : 'asc' %>
+          <%= link_to admin_tests_path(sort: 'title', direction: current_direction), data: { turbo_frame: "tests" } do %>
+            Title
+            <% if params[:sort] == 'title' %>
+              <%= octicon(params[:direction] == 'asc' ? 'arrow-up' : 'arrow-down') %>
+            <% end %>
+          <% end %>
+        </th>
+
+        <th>Дата обновления</th>
+        <th>Уровень</th>
+        <th>Количество вопросов</th>
         <th colspan="6"> Действия </th>
       </tr>
-      </thead>
+
       <tbody>
-      <%= render @test %>
+      <%= render @tests %>
       </tbody>
     </table>
+  </turbo-frame>
     <div class="row mt-3 ">
     <div class="col-md-6 text-center my-3 mt-3">
       <%= link_to "Новый тест", new_admin_test_path, method: :get, class: "btn btn-primary" %>

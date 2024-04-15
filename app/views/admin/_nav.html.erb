@@ -19,11 +19,9 @@
           <div class="nav title_text fs-4 fw-bold ms-3">
             <%= 'ADMIN PANEL' %>
           </div>
-
           <div class="nav lk1_admin ms-auto">
-            <%= link_to "Выйти", destroy_user_session_path, method: :delete, class: "btn btn-outline-light", style: "color: black" %>
+            <%= button_to "Выйти", destroy_user_session_path, method: :delete, form: { class: 'd-inline' }, class: "btn btn-outline-light btn-lg", style: "padding: 0.5rem 1.5rem; border-radius: 0.2rem; text-align: center;" %>
           </div>
-
         </div>
       </div>
       <div class="container">
