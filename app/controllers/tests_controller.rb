@@ -8,7 +8,7 @@ class TestsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tests = current_user.authored_tests
+    @test = current_user.authored_tests
     redirect_to admin_tests_path if current_user.admin?
     @tests = Test.all
     return unless params[:sort] && %w[title].include?(params[:sort])
